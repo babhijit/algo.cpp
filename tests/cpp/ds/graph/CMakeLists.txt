@@ -1,11 +1,11 @@
 project(algo.cpp.test.cpp.ds.graph)
 
-add_executable(bag_test bag_test.cpp)
+add_executable(ds_graph_tests bag_tests.cpp graph_tests.cpp)
 
 target_link_libraries(
-        bag_test
+        ds_graph_tests
         GTest::gtest_main
         algo.cpp
 )
 
-add_test(NAME bag_test COMMAND sanity)
+gtest_discover_tests(ds_graph_tests)

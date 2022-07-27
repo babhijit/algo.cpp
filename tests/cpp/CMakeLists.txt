@@ -8,6 +8,5 @@ target_link_libraries(
 )
 
 gtest_discover_tests(sanity_test)
-#add_test(NAME sanity_test COMMAND sanity)
 
 add_subdirectory(ds)

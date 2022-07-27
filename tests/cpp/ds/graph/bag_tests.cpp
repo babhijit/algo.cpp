@@ -4,24 +4,24 @@
 
 #include <graph/bag.hpp>
 
-class BagTest : public ::testing::Test {
+class BagTests : public ::testing::Test {
 protected:
     void SetUp() override {}
 
     void TearDown() override {}
 };
 
-TEST_F(BagTest, BagInitSuccess) {
+TEST_F(BagTests, BagInitSuccess) {
     algo::cpp::ds::Bag<int> bag;
     ASSERT_TRUE(bag.empty());
 }
 
-TEST_F(BagTest, BagInitFail) {
+TEST_F(BagTests, BagInitFail) {
     algo::cpp::ds::Bag<int> bag;
     ASSERT_NE(1, bag.size());
 }
 
-TEST_F(BagTest, AddToBag) {
+TEST_F(BagTests, AddToBag) {
     algo::cpp::ds::Bag<int> bag;
 
     std::array<int, 6> items_to_add = {1, 2, 3, 4, 5, 6};
@@ -32,7 +32,7 @@ TEST_F(BagTest, AddToBag) {
     ASSERT_EQ(items_to_add.size(), bag.size());
 }
 
-TEST_F(BagTest, TestIterators) {
+TEST_F(BagTests, TestIterators) {
     algo::cpp::ds::Bag<int> bag;
     std::array<int, 6> items_to_add = {1, 2, 3, 4, 5, 6};
     for(int item: items_to_add) {
@@ -46,7 +46,7 @@ TEST_F(BagTest, TestIterators) {
     }
 }
 
-TEST_F(BagTest, TestReverseIterators) {
+TEST_F(BagTests, TestReverseIterators) {
     algo::cpp::ds::Bag<int> bag;
     std::array<int, 6> items_to_add = {1, 2, 3, 4, 5, 6};
     for(int item: items_to_add) {

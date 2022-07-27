@@ -28,10 +28,7 @@ namespace algo::cpp::ds {
             if (V < 0)  throw std::invalid_argument("V must be positive");
             V_ = V;
             E_ = 0;
-            adj_.reserve(V_);
-            for (int vertex = 0; vertex < V; ++vertex) {
-                adj_.add(Bag<T>());
-            }
+            adj_ = std::vector<Bag<T>>(V_, Bag<T>());
         }
 
         explicit Graph(std::ifstream& in) {
