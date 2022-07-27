@@ -37,11 +37,13 @@ namespace algo::cpp::ds {
 
             adj_ = std::vector<Bag<T>>(V_, Bag<T>());
 
-            in >> E_;
-            if (E_ < 0)   throw std::invalid_argument("Number of Edges in a Graph must be positive");
+            int E;
+            in >> E;
+            if (E < 0)   throw std::invalid_argument("Number of Edges in a Graph must be positive");
 
+            E_ = 0;
             int v, w;
-            for (int e = 0; e < E_; ++e) {
+            for (int e = 0; e < E; ++e) {
                 in >> v >> w;
                 add_edge(v, w);
             }
@@ -79,7 +81,7 @@ namespace algo::cpp::ds {
             adj_[w].add(v);
         }
 
-        Bag<T> adj(int v) const {
+        const Bag<T>& adj(int v) const {
             validate_vertex(v);
             return adj_[v];
         }
@@ -95,7 +97,8 @@ namespace algo::cpp::ds {
             for (int v = 0; v < V_; ++v) {
                 auto &adj = adj_[v];
                 for (auto it = adj.begin(); it != adj.end(); ++it) {
-                    if (*it == v) {
+                    int w = *it;
+                    if (w == v) {
                         ++count;
                     }
                 }
@@ -106,7 +109,7 @@ namespace algo::cpp::ds {
         }
 
         std::size_t max_degree() const {
-            auto max_degree = 0;
+            std::size_t max_degree = 0;
             for (int v = 0; v < V_; ++v) {
                 max_degree = std::max(max_degree, degree(v));
             }
@@ -128,7 +131,7 @@ namespace algo::cpp::ds {
 
     private:
 
-        void validate_vertex(int v) {
+        void validate_vertex(int v) const {
             if ((v < 0) || (v >= V_))
                 throw std::invalid_argument(std::string("v must be between 0 and ") + std::to_string(V_));
         }

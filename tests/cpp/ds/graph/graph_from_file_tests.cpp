@@ -1,6 +1,5 @@
 #include <array>
 #include <filesystem>
-#include <memory>
 #include <random>
 #include <stdexcept>
 #include <vector>
@@ -11,7 +10,12 @@
 
 using namespace algo::cpp::ds;
 
-class GraphTests : public ::testing::Test {
+/*
+ * To run this test ensure that the IDE sets the current working directory to "resources" directory
+ * TODO: Find a way to set the current working directory to resources directory
+ *          or copy the relevant resource files to CMAKE executable directory.
+ */
+class GraphFromFileTests : public ::testing::Test {
 protected:
     using IntGraph = Graph<int>;
 
@@ -27,7 +31,6 @@ protected :
 protected:
     void SetUp() override {
         VERTICES = 13;
-        G_ = std::make_unique<IntGraph>(VERTICES);
 
         ADJ.push_back(std::vector<int>{5, 1, 2, 6});
         ADJ.push_back(std::vector<int>{0});
@@ -42,22 +45,6 @@ protected:
         ADJ.push_back(std::vector<int>{9});
         ADJ.push_back(std::vector<int>{12, 9});
         ADJ.push_back(std::vector<int>{9, 11});
-
-
-        std::vector<std::pair<int, int>> edges;
-        edges.push_back(std::make_pair(0, 5));
-        edges.push_back(std::make_pair(4, 3));
-        edges.push_back(std::make_pair(0, 1));
-        edges.push_back(std::make_pair(9, 12));
-        edges.push_back(std::make_pair(6, 4));
-        edges.push_back(std::make_pair(5, 4));
-        edges.push_back(std::make_pair(0, 2));
-        edges.push_back(std::make_pair(11, 12));
-        edges.push_back(std::make_pair(9, 10));
-        edges.push_back(std::make_pair(0, 6));
-        edges.push_back(std::make_pair(7, 8));
-        edges.push_back(std::make_pair(9, 11));
-        edges.push_back(std::make_pair(5, 3));
 
         VERTEX_DEGREE.push_back(4);
         VERTEX_DEGREE.push_back(1);
@@ -74,13 +61,10 @@ protected:
         VERTEX_DEGREE.push_back(2);
 
         SELF_LOOPS_COUNT = 0;
-
-        EDGES = 0;
-        for (auto &edge: edges) {
-            G_->add_edge(edge.first, edge.second);
-            ++EDGES;
-        }
+        EDGES = 13;
         MAX_DEGREE = 4;
+
+        load_graph_from_resource();
     }
 
     void TearDown() override {
@@ -93,42 +77,49 @@ protected:
         std::uniform_int_distribution<std::mt19937::result_type> dist(0, 12);
         return dist(rand_gen);
     }
+
+private:
+    void load_graph_from_resource() {
+        namespace fs = std::filesystem;
+        auto path = fs::current_path();
+
+        const std::string graph_file = "tinyG.txt";
+        path /= "ds";
+        path /= "graph";
+        path /= graph_file;
+
+        std::string file_path = path.string();
+        try {
+            std::ifstream in(path);
+            G_ = std::make_unique<IntGraph>(in);
+        } catch(const std::exception& e) {
+            throw;
+        }
+    }
 };
 
-
-TEST_F(GraphTests, InitSuccess) {
-    algo::cpp::ds::Graph<int> G(0);
-    ASSERT_EQ(0, G.V());
-    ASSERT_EQ(0, G.E());
-}
-
-TEST_F(GraphTests, InitFail) {
-    using namespace algo::cpp::ds;
-    ASSERT_THROW(Graph<int>(-1), std::invalid_argument);
-}
-
-TEST_F(GraphTests, GraphVertices) {
+TEST_F(GraphFromFileTests, GraphVertices) {
     ASSERT_EQ(VERTICES, G_->V());
 }
 
-TEST_F(GraphTests, GraphEdges) {
+TEST_F(GraphFromFileTests, GraphEdges) {
     ASSERT_EQ(EDGES, G_->E());
 }
 
-TEST_F(GraphTests, GraphMaxDegree) {
+TEST_F(GraphFromFileTests, GraphMaxDegree) {
     ASSERT_EQ(MAX_DEGREE, G_->max_degree());
 }
 
-TEST_F(GraphTests, GraphDegreeOfAnyVertex) {
+TEST_F(GraphFromFileTests, GraphDegreeOfAnyVertex) {
     const int VERTEX_NO = get_random_vertex();
     ASSERT_EQ(VERTEX_DEGREE[VERTEX_NO], G_->degree(VERTEX_NO));
 }
 
-TEST_F(GraphTests, GraphSelfLoopCount) {
+TEST_F(GraphFromFileTests, GraphSelfLoopCount) {
     ASSERT_EQ(SELF_LOOPS_COUNT, G_->self_loops_count());
 }
 
-TEST_F(GraphTests, GraphAdjCheck) {
+TEST_F(GraphFromFileTests, GraphAdjCheck) {
     int v = get_random_vertex();
     auto &adj = G_->adj(v);
 

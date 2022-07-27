@@ -1,6 +1,8 @@
 project(algo.cpp.test.cpp.ds.graph)
 
-add_executable(ds_graph_tests bag_tests.cpp graph_tests.cpp)
+set(TEST_SOURCES bag_tests.cpp graph_tests.cpp graph_from_file_tests.cpp)
+
+add_executable(ds_graph_tests ${TEST_SOURCES})
 
 target_link_libraries(
         ds_graph_tests
