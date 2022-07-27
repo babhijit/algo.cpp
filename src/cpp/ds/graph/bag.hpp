@@ -1,7 +1,3 @@
-//
-// Created by abhijit on 27/7/22.
-//
-
 #ifndef ALGO_CPP_BAG_HPP
 #define ALGO_CPP_BAG_HPP
 
