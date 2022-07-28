@@ -88,13 +88,8 @@ private:
         path /= "graph";
         path /= graph_file;
 
-        std::string file_path = path.string();
-        try {
-            std::ifstream in(path);
-            G_ = std::make_unique<IntGraph>(in);
-        } catch(const std::exception& e) {
-            throw;
-        }
+        auto G = algo::cpp::ds::load_graph_from_file<int>(path);
+        G_ = std::make_unique<IntGraph>(std::move(G));
     }
 };
 

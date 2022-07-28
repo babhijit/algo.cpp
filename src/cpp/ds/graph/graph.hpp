@@ -2,6 +2,7 @@
 #define ALGO_CPP_GRAPH_HPP
 
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -15,55 +16,34 @@ namespace algo::cpp::ds {
     class Graph {
     private:
         // Number of V_
-        int V_;
+        const int V_;
 
         // number of E_
-        int E_;
+        int E_ = 0;
 
         // adjacency list
         std::vector<Bag<T>> adj_;
 
     public:
-        explicit Graph(const int V) {
-            if (V < 0)  throw std::invalid_argument("V must be positive");
-            V_ = V;
-            E_ = 0;
+        explicit Graph(const int V) : V_(V) {
+            if (V < 0) throw std::invalid_argument("V must be positive");
             adj_ = std::vector<Bag<T>>(V_, Bag<T>());
         }
 
-        explicit Graph(std::ifstream& in) {
-            in >> V_;
-            if (V_ < 0)  throw std::invalid_argument("Number of Vertices in a Graph must be positive");
-
-            adj_ = std::vector<Bag<T>>(V_, Bag<T>());
-
-            int E;
-            in >> E;
-            if (E < 0)   throw std::invalid_argument("Number of Edges in a Graph must be positive");
-
-            E_ = 0;
-            int v, w;
-            for (int e = 0; e < E; ++e) {
-                in >> v >> w;
-                add_edge(v, w);
-            }
-        }
-
-        Graph(const Graph& G) : V_(G.V()) {
+        Graph(const Graph &G) : V_(G.V()) {
             E_ = G.E();
 
             for (int v = 0; v < V_; ++v) {
                 // add the E_ in reverse so that both the adjacency lists are in the same order
-                auto& adj = G.adj(v);
-                auto& bag = adj_[v];
+                auto &adj = G.adj(v);
+                auto &bag = adj_[v];
                 for (auto it = adj.rbegin(); it != adj.rend(); ++it) {
                     bag.add(*it);
                 }
             }
         }
 
-        Graph(Graph&& G)  noexcept {
-            V_ = G.V_;
+        Graph(Graph &&G)  noexcept : V_(G.V_) {
             E_ = G.E_;
             adj_ = std::move(G.adj_);
         }
@@ -81,7 +61,7 @@ namespace algo::cpp::ds {
             adj_[w].add(v);
         }
 
-        const Bag<T>& adj(int v) const {
+        const Bag<T> &adj(int v) const {
             validate_vertex(v);
             return adj_[v];
         }
@@ -105,7 +85,7 @@ namespace algo::cpp::ds {
             }
 
             // in undirected graph, each edge is counted twice
-            return count/2;
+            return count / 2;
         }
 
         std::size_t max_degree() const {
@@ -121,7 +101,7 @@ namespace algo::cpp::ds {
             oss << V_ << " V_, " << E_ << " E_";
             for (int v = 0; v < V_; ++v) {
                 oss << "\n" << v << ": ";
-                for (auto& w: adj_[v]) {
+                for (auto &w: adj_[v]) {
                     oss << w << " ";
                 }
             }
@@ -136,6 +116,28 @@ namespace algo::cpp::ds {
                 throw std::invalid_argument(std::string("v must be between 0 and ") + std::to_string(V_));
         }
     };
+
+    template<typename T>
+    Graph<T> load_graph_from_file(const std::filesystem::path &file_path) {
+        std::ifstream in(file_path);
+
+        int V;
+        in >> V;
+
+        int E;
+        in >> E;
+
+        if (E < 0) throw std::invalid_argument("Number of Edges in a Graph must be positive");
+
+        Graph<T> G(V);
+        int v, w;
+        for (int e = 0; e < E; ++e) {
+            in >> v >> w;
+            G.add_edge(v, w);
+        }
+
+        return G;
+    }
 
 }
 
