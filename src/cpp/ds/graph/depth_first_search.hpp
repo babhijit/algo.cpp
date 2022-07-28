@@ -19,7 +19,7 @@ namespace algo::cpp::ds {
         std::size_t count_ = 0;
 
     public:
-        explicit DepthFirstSearch(const Graph<T> G, int s) : marked_(G.V(), false) {
+        explicit DepthFirstSearch(const Graph<T>& G, int s) : marked_(G.V(), false) {
             dfs(G, s);
         }
 
@@ -28,13 +28,12 @@ namespace algo::cpp::ds {
         int count() const { return count_; }
 
     private:
-        void dfs(const Graph<T> G, int v) {
+        void dfs(const Graph<T>& G, int v) {
             marked_[v] = true;
             ++count_;
 
             auto& adj = G.adj(v);
-            for(auto it = adj.begin(); it != adj.end(); ++it) {
-                int w = *it;
+            for(auto w: adj) {
                 if (!marked_[w]) {
                     dfs(G, w);
                 }

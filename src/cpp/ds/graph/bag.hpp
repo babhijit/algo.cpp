@@ -2,25 +2,25 @@
 #define ALGO_CPP_BAG_HPP
 
 #include <iterator>
-#include <vector>
+#include <list>
 
 namespace algo::cpp::ds {
 
 
     template<typename T>
     class Bag {
-        static constexpr int DEFAULT_CAPACITY = 8;
-
     private:
-        std::vector<T> items_;
+        std::list<T> items_;
 
     public:
-        explicit Bag(const int capacity = DEFAULT_CAPACITY) {
-            items_.reserve(capacity);
-        }
+        explicit Bag() { }
 
         void add(T item) {
-            items_.push_back(std::move(item));
+            if (items_.empty()) {
+                items_.emplace_back(std::move(item));
+            } else {
+                items_.emplace_front(std::move(item));
+            }
         }
 
         std::size_t size() const {

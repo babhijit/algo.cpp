@@ -39,11 +39,7 @@ TEST_F(BagTests, TestIterators) {
         bag.add(item);
     }
 
-    auto items_it = std::begin(items_to_add);
-    auto bag_it = std::begin(bag);
-    while(bag_it != std::end(bag)) {
-        ASSERT_EQ(*items_it++, *bag_it++);
-    }
+    ASSERT_TRUE(std::equal(bag.rbegin(), bag.rend(), items_to_add.begin(), items_to_add.end()));
 }
 
 TEST_F(BagTests, TestReverseIterators) {
@@ -53,9 +49,5 @@ TEST_F(BagTests, TestReverseIterators) {
         bag.add(item);
     }
 
-    auto items_it = std::rbegin(items_to_add);
-    auto bag_it = std::rbegin(bag);
-    while(bag_it != std::rend(bag)) {
-        ASSERT_EQ(*items_it++, *bag_it++);
-    }
+    ASSERT_TRUE(std::equal(bag.rbegin(), bag.rend(), items_to_add.begin(), items_to_add.end()));
 }

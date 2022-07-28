@@ -15,7 +15,7 @@ namespace algo::cpp::ds {
     template<typename T>
     class Graph {
     private:
-        // Number of V_
+        // Number of vertices
         const int V_;
 
         // number of E_
@@ -32,6 +32,7 @@ namespace algo::cpp::ds {
 
         Graph(const Graph &G) : V_(G.V()) {
             E_ = G.E();
+            adj_ = std::vector<Bag<T>>(V_, Bag<T>());
 
             for (int v = 0; v < V_; ++v) {
                 // add the E_ in reverse so that both the adjacency lists are in the same order
@@ -75,9 +76,7 @@ namespace algo::cpp::ds {
             std::size_t count = 0;
 
             for (int v = 0; v < V_; ++v) {
-                auto &adj = adj_[v];
-                for (auto it = adj.begin(); it != adj.end(); ++it) {
-                    int w = *it;
+                for (auto& w: adj_[v]) {
                     if (w == v) {
                         ++count;
                     }
@@ -118,7 +117,7 @@ namespace algo::cpp::ds {
     };
 
     template<typename T>
-    Graph<T> load_graph_from_file(const std::filesystem::path &file_path) {
+    Graph<T> load_graph_from_file(std::filesystem::path file_path) {
         std::ifstream in(file_path);
 
         int V;

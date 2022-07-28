@@ -114,7 +114,7 @@ TEST_F(GraphFromFileTests, GraphAdjCheck) {
     int v = get_random_vertex();
     auto &adj = G_->adj(v);
 
-    auto adj_itr = std::begin(ADJ[v]);
+    auto adj_itr = std::rbegin(ADJ[v]);
     for (auto it = std::begin(adj); it != std::end(adj); ++it) {
         ASSERT_EQ(*adj_itr++, *it);
     }

@@ -28,35 +28,35 @@ protected:
         VERTICES = 13;
         G_ = std::make_unique<IntGraph>(VERTICES);
 
-        ADJ.push_back(std::vector<int>{5, 1, 2, 6});
-        ADJ.push_back(std::vector<int>{0});
-        ADJ.push_back(std::vector<int>{0});
-        ADJ.push_back(std::vector<int>{4, 5});
-        ADJ.push_back(std::vector<int>{3, 6, 5});
-        ADJ.push_back(std::vector<int>{0, 4, 3});
-        ADJ.push_back(std::vector<int>{4, 0});
-        ADJ.push_back(std::vector<int>{8});
-        ADJ.push_back(std::vector<int>{7});
-        ADJ.push_back(std::vector<int>{12, 10, 11});
-        ADJ.push_back(std::vector<int>{9});
-        ADJ.push_back(std::vector<int>{12, 9});
-        ADJ.push_back(std::vector<int>{9, 11});
+        ADJ.emplace_back(std::vector<int>{5, 1, 2, 6});
+        ADJ.emplace_back(std::vector<int>{0});
+        ADJ.emplace_back(std::vector<int>{0});
+        ADJ.emplace_back(std::vector<int>{4, 5});
+        ADJ.emplace_back(std::vector<int>{3, 6, 5});
+        ADJ.emplace_back(std::vector<int>{0, 4, 3});
+        ADJ.emplace_back(std::vector<int>{4, 0});
+        ADJ.emplace_back(std::vector<int>{8});
+        ADJ.emplace_back(std::vector<int>{7});
+        ADJ.emplace_back(std::vector<int>{12, 10, 11});
+        ADJ.emplace_back(std::vector<int>{9});
+        ADJ.emplace_back(std::vector<int>{12, 9});
+        ADJ.emplace_back(std::vector<int>{9, 11});
 
 
         std::vector<std::pair<int, int>> edges;
-        edges.push_back(std::make_pair(0, 5));
-        edges.push_back(std::make_pair(4, 3));
-        edges.push_back(std::make_pair(0, 1));
-        edges.push_back(std::make_pair(9, 12));
-        edges.push_back(std::make_pair(6, 4));
-        edges.push_back(std::make_pair(5, 4));
-        edges.push_back(std::make_pair(0, 2));
-        edges.push_back(std::make_pair(11, 12));
-        edges.push_back(std::make_pair(9, 10));
-        edges.push_back(std::make_pair(0, 6));
-        edges.push_back(std::make_pair(7, 8));
-        edges.push_back(std::make_pair(9, 11));
-        edges.push_back(std::make_pair(5, 3));
+        edges.emplace_back(0, 5);
+        edges.emplace_back(4, 3);
+        edges.emplace_back(0, 1);
+        edges.emplace_back(9, 12);
+        edges.emplace_back(6, 4);
+        edges.emplace_back(5, 4);
+        edges.emplace_back(0, 2);
+        edges.emplace_back(11, 12);
+        edges.emplace_back(9, 10);
+        edges.emplace_back(0, 6);
+        edges.emplace_back(7, 8);
+        edges.emplace_back(9, 11);
+        edges.emplace_back(5, 3);
 
         VERTEX_DEGREE.push_back(4);
         VERTEX_DEGREE.push_back(1);
@@ -101,6 +101,11 @@ TEST_F(GraphTests, InitSuccess) {
     ASSERT_EQ(0, G.E());
 }
 
+TEST_F(GraphTests, GraphCopy) {
+    IntGraph G_copy = *G_;
+    ASSERT_STREQ(G_->str().c_str(), G_copy.str().c_str());
+}
+
 TEST_F(GraphTests, InitFail) {
     using namespace algo::cpp::ds;
     ASSERT_THROW(Graph<int>(-1), std::invalid_argument);
@@ -131,7 +136,7 @@ TEST_F(GraphTests, GraphAdjCheck) {
     int v = get_random_vertex();
     auto &adj = G_->adj(v);
 
-    auto adj_itr = std::begin(ADJ[v]);
+    auto adj_itr = std::rbegin(ADJ[v]);
     for (auto it = std::begin(adj); it != std::end(adj); ++it) {
         ASSERT_EQ(*adj_itr++, *it);
     }
