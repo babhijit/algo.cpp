@@ -9,9 +9,9 @@ Data Structures
 Graph
 -----
 
-* [Undirected Graph](src/cpp/ds/graph/graph.hpp)
-* [Depth First Search](src/cpp/ds/graph/depth_first_search.hpp)
-* [Depth First Paths](src/cpp/ds/graph/depth_first_paths.hpp)
+* [Undirected Graph](src/cpp/ds/include/graph/graph.hpp)
+* [Depth First Search](src/cpp/ds/include/graph/depth_first_search.hpp)
+* [Depth First Paths](src/cpp/ds/include/graph/depth_first_paths.hpp)
 
 ---------------------------------------------------------
 

@@ -16,11 +16,8 @@ using namespace algo::cpp::ds;
  * This test specifically runs on tinyG.txt and all the tests are hardwired to this file.
  */
 class GraphFromFileTests : public ::testing::Test {
-protected:
-    using IntGraph = Graph<int>;
-
 protected :
-    std::unique_ptr<IntGraph> G_;
+    std::unique_ptr<Graph> G_;
     int VERTICES;
     int EDGES;
     int SELF_LOOPS_COUNT;
@@ -84,8 +81,8 @@ private:
         auto path = fs::current_path();
 
         const std::string graph_file = "tinyG.txt";
-        auto G = load_graph_from_file<int>(get_graph_resource_path(graph_file));
-        G_ = std::make_unique<IntGraph>(std::move(G));
+        auto G = load_graph_from_file(get_graph_resource_path(graph_file));
+        G_ = std::make_unique<Graph>(std::move(G));
     }
 };
 

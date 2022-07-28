@@ -11,7 +11,6 @@
 
 namespace algo::cpp::ds {
 
-    template <typename T>
     class DepthFirstSearch {
 
     private:
@@ -19,26 +18,14 @@ namespace algo::cpp::ds {
         std::size_t count_ = 0;
 
     public:
-        explicit DepthFirstSearch(const Graph<T>& G, int s) : marked_(G.V(), false) {
-            dfs(G, s);
-        }
+        explicit DepthFirstSearch(const Graph &G, int s);
 
         bool marked(int v) const { return marked_[v]; }
 
         int count() const { return count_; }
 
     private:
-        void dfs(const Graph<T>& G, int v) {
-            marked_[v] = true;
-            ++count_;
-
-            auto& adj = G.adj(v);
-            for(auto w: adj) {
-                if (!marked_[w]) {
-                    dfs(G, w);
-                }
-            }
-        }
+        void dfs(const Graph &G, int v);
     };
 
 }

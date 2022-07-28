@@ -9,7 +9,7 @@
  */
 class LoadGraphsFromFilesTest : public ::testing::Test {
 protected:
-    using IntGraph = algo::cpp::ds::Graph<int>;
+    using Graph = algo::cpp::ds::Graph;
     
 protected:
     void SetUp() override {}
@@ -20,21 +20,21 @@ protected:
 
 TEST_F(LoadGraphsFromFilesTest, LoadTinyGTest) {
     auto tinyGPath = get_graph_resource_path("tinyG.txt");
-    IntGraph G = algo::cpp::ds::load_graph_from_file<int>(std::move(tinyGPath));
+    Graph G = algo::cpp::ds::load_graph_from_file(std::move(tinyGPath));
     ASSERT_EQ(13, G.V());
     ASSERT_EQ(13, G.E());
 }
 
 TEST_F(LoadGraphsFromFilesTest, LoadMediumGTest) {
     auto mediumGPath = get_graph_resource_path("mediumG.txt");
-    IntGraph G = algo::cpp::ds::load_graph_from_file<int>(std::move(mediumGPath));
+    Graph G = algo::cpp::ds::load_graph_from_file(std::move(mediumGPath));
     ASSERT_EQ(250, G.V());
     ASSERT_EQ(1273, G.E());
 }
 
 TEST_F(LoadGraphsFromFilesTest, LoadLargeGTest) {
     auto mediumGPath = get_graph_resource_path("largeG.txt");
-    IntGraph G = algo::cpp::ds::load_graph_from_file<int>(std::move(mediumGPath));
+    Graph G = algo::cpp::ds::load_graph_from_file(std::move(mediumGPath));
     ASSERT_EQ(1'000'000, G.V());
     ASSERT_EQ(7'586'063, G.E());
 }

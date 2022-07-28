@@ -33,4 +33,6 @@
 *_tests
 
 /.idea/*
+/cmake-build-debug/*
 /cmake-build-debug/
+/cmake-build-debug/_deps/googletest-src/

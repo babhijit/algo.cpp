@@ -12,23 +12,23 @@
 #include "graph_test_utils.hpp"
 
 class DepthFirstPathTests : public ::testing::Test {
-    using IntGraph = algo::cpp::ds::Graph<int>;
+    using Graph = algo::cpp::ds::Graph;
 
 protected:
-    std::unique_ptr<IntGraph> G_;
+    std::unique_ptr<Graph> G_;
 
 protected:
     void SetUp() override {
         auto graph_file = get_graph_resource_path("tinyCG.txt");
-        auto G = algo::cpp::ds::load_graph_from_file<int>(std::move(graph_file));
-        G_ = std::make_unique<IntGraph>(std::move(G));
+        auto G = algo::cpp::ds::load_graph_from_file(std::move(graph_file));
+        G_ = std::make_unique<Graph>(std::move(G));
     }
 
     void TearDown() override { G_.reset(); }
 };
 
 TEST_F(DepthFirstPathTests, PathFromVertex0ToVertex0) {
-    algo::cpp::ds::DepthFirstPaths<int> paths(*G_, 0);
+    algo::cpp::ds::DepthFirstPaths paths(*G_, 0);
     auto path = paths.path_to(0);
 
     std::vector<int> expected{0};
@@ -37,7 +37,7 @@ TEST_F(DepthFirstPathTests, PathFromVertex0ToVertex0) {
 }
 
 TEST_F(DepthFirstPathTests, PathFromVertex0ToVertex1) {
-    algo::cpp::ds::DepthFirstPaths<int> paths(*G_, 0);
+    algo::cpp::ds::DepthFirstPaths paths(*G_, 0);
     auto path = paths.path_to(1);
 
     std::vector<int> expected{0, 2, 1};

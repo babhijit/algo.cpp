@@ -11,11 +11,9 @@
 using namespace algo::cpp::ds;
 
 class GraphTests : public ::testing::Test {
-protected:
-    using IntGraph = Graph<int>;
 
 protected :
-    std::unique_ptr<IntGraph> G_;
+    std::unique_ptr<Graph> G_;
     int VERTICES;
     int EDGES;
     int SELF_LOOPS_COUNT;
@@ -26,7 +24,7 @@ protected :
 protected:
     void SetUp() override {
         VERTICES = 13;
-        G_ = std::make_unique<IntGraph>(VERTICES);
+        G_ = std::make_unique<Graph>(VERTICES);
 
         ADJ.emplace_back(std::vector<int>{5, 1, 2, 6});
         ADJ.emplace_back(std::vector<int>{0});
@@ -96,19 +94,19 @@ protected:
 
 
 TEST_F(GraphTests, InitSuccess) {
-    algo::cpp::ds::Graph<int> G(0);
+    algo::cpp::ds::Graph G(0);
     ASSERT_EQ(0, G.V());
     ASSERT_EQ(0, G.E());
 }
 
 TEST_F(GraphTests, GraphCopy) {
-    IntGraph G_copy = *G_;
+    Graph G_copy = *G_;
     ASSERT_STREQ(G_->str().c_str(), G_copy.str().c_str());
 }
 
 TEST_F(GraphTests, InitFail) {
     using namespace algo::cpp::ds;
-    ASSERT_THROW(Graph<int>(-1), std::invalid_argument);
+    ASSERT_THROW(Graph(-1), std::invalid_argument);
 }
 
 TEST_F(GraphTests, GraphVertices) {

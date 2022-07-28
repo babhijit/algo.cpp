@@ -13,14 +13,10 @@ namespace algo::cpp::ds {
         std::list<T> items_;
 
     public:
-        explicit Bag() { }
+        explicit Bag() {}
 
         void add(T item) {
-            if (items_.empty()) {
-                items_.emplace_back(std::move(item));
-            } else {
-                items_.emplace_front(std::move(item));
-            }
+            items_.emplace_front(std::move(item));
         }
 
         std::size_t size() const {
