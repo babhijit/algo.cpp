@@ -12,7 +12,9 @@ protected:
     using Graph = algo::cpp::ds::Graph;
     
 protected:
-    void SetUp() override {}
+    void SetUp() override {
+        GTEST_SKIP() << "Skipping as running this test takes over 6 seconds!";
+    }
     
     void TearDown() override {}
 };

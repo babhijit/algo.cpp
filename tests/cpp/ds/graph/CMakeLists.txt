@@ -8,7 +8,7 @@ set(TEST_SOURCES    bag_tests.cpp
                     load_graphs_from_files_tests.cpp
                     dfs_tests.cpp
                     depth_first_paths_tests.cpp
-        breadth_first_paths_tests.cpp)
+        breadth_first_paths_tests.cpp cc_tests.cpp)
 
 add_executable(ds_graph_tests ${TEST_SOURCES})
 

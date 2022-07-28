@@ -7,12 +7,14 @@ set(DS_HEADERS include/graph/bag.hpp
         include/graph/depth_first_search.hpp
         include/graph/depth_first_paths.hpp
         include/graph/breadth_first_paths.hpp
+        include/graph/cc.hpp
         )
 
 set(DS_SOURCES impl/graph/graph.cpp
         impl/graph/depth_first_search.cpp
         impl/graph/depth_first_paths.cpp
         impl/graph/breadth_first_paths.cpp
+        impl/graph/cc.cpp
         )
 
 add_library(${PROJECT_NAME} STATIC ${DS_HEADERS} ${DS_SOURCES})
