@@ -43,8 +43,8 @@ namespace algo::cpp::ds {
             }
         }
 
-        Graph(Graph &&G)  noexcept : V_(G.V_) {
-            E_ = G.E_;
+        Graph(Graph &&G)  noexcept : V_(G.V()) {
+            E_ = G.E();
             adj_ = std::move(G.adj_);
         }
 

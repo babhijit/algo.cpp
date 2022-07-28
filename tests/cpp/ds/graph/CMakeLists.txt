@@ -1,6 +1,6 @@
 project(algo.cpp.test.cpp.ds.graph)
 
-set(TEST_SOURCES bag_tests.cpp graph_tests.cpp graph_from_file_tests.cpp)
+set(TEST_SOURCES bag_tests.cpp graph_tests.cpp graph_from_file_tests.cpp load_graphs_from_files_tests.cpp)
 
 add_executable(ds_graph_tests ${TEST_SOURCES})
 

@@ -12,8 +12,7 @@ using namespace algo::cpp::ds;
 
 /*
  * To run this test ensure that the IDE sets the current working directory to "resources" directory
- * TODO: Find a way to set the current working directory to resources directory
- *          or copy the relevant resource files to CMAKE executable directory.
+ * This test specifically runs on tinyG.txt and all the tests are hardwired to this file.
  */
 class GraphFromFileTests : public ::testing::Test {
 protected:
@@ -84,11 +83,13 @@ private:
         auto path = fs::current_path();
 
         const std::string graph_file = "tinyG.txt";
+        path /= "tests";
+        path /= "resources";
         path /= "ds";
         path /= "graph";
         path /= graph_file;
 
-        auto G = algo::cpp::ds::load_graph_from_file<int>(path);
+        auto G = load_graph_from_file<int>(path);
         G_ = std::make_unique<IntGraph>(std::move(G));
     }
 };
