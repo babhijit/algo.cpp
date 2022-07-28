@@ -5,9 +5,7 @@
 #ifndef ALGO_CPP_PATHS_HPP
 #define ALGO_CPP_PATHS_HPP
 
-#include <list>
 #include <vector>
-
 
 #include "graph.hpp"
 
@@ -17,38 +15,26 @@ namespace algo::cpp::ds {
     class Paths {
     private:
         std::vector<bool> marked_;
-        std::vector<int> edge_to_;
-        const int s_;
+        std::size_t count_ = 0;
 
     public:
-        explicit Paths(const Graph<T> G, int s) : s_(s), marked_(G.V(), false), edge_to_(G.E(), -1) {
-            dfs(G, s);
+        explicit Paths(const Graph<T>& G, int source) : marked_(G.V(), false) {
+            dfs(G, source);
         }
 
-        bool has_path_to(int v) {
-            return marked_[v];
-        }
+        std::size_t count() const { return count_; }
 
-        auto path_to(int v) {
-            auto path = std::list<int>();
-
-            for (int x = v; x != s_; x = edge_to_[x]) {
-                path.push_front(x);
-            }
-            path.push_front(s_);
-
-            return path;
-        }
+        bool connected(int v) const { return marked_[v]; }
 
     private:
-        void dfs(const Graph<T> G, int v) {
+        void dfs(const Graph<T>& G, int v) {
             marked_[v] = true;
+            ++count_;
 
-            auto &adj = G.adj(v);
-            for (auto it = adj.begin(); it != adj.end(); ++it) {
+            auto& adj = G.adj(v);
+            for (auto it = std::begin(adj); it != std::end(adj); ++it) {
                 int w = *it;
                 if (!marked_[w]) {
-                    edge_to_[w] = v;
                     dfs(G, w);
                 }
             }

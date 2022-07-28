@@ -1,5 +1,4 @@
 #include <array>
-#include <filesystem>
 #include <random>
 #include <stdexcept>
 #include <vector>
@@ -7,6 +6,8 @@
 #include <gtest/gtest.h>
 
 #include <graph/graph.hpp>
+
+#include "graph_test_utils.hpp"
 
 using namespace algo::cpp::ds;
 
@@ -83,13 +84,7 @@ private:
         auto path = fs::current_path();
 
         const std::string graph_file = "tinyG.txt";
-        path /= "tests";
-        path /= "resources";
-        path /= "ds";
-        path /= "graph";
-        path /= graph_file;
-
-        auto G = load_graph_from_file<int>(path);
+        auto G = load_graph_from_file<int>(get_graph_resource_path(graph_file));
         G_ = std::make_unique<IntGraph>(std::move(G));
     }
 };
