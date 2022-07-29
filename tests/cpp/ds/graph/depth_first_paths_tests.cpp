@@ -1,15 +1,17 @@
 #include <list>
-#include <memory>
 #include <vector>
 
 #include <gtest/gtest.h>
 
 #include <graph/graph.hpp>
 #include <graph/depth_first_paths.hpp>
+#include <utils/graph_loader.hpp>
 
-#include <stl_compare_utils.hpp>
+#include "stl_compare_utils.hpp"
 
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
+
+using namespace algo::cpp::ds::tests::utils;
 
 class DepthFirstPathTests : public ::testing::Test {
     using Graph = algo::cpp::ds::Graph;
@@ -19,8 +21,8 @@ protected:
 
 protected:
     void SetUp() override {
-        auto graph_file = get_graph_resource_path("tinyCG.txt");
-        auto G = algo::cpp::ds::load_graph_from_file(std::move(graph_file));
+        algo::cpp::ds::utils::GraphLoader<Graph> loader;
+        auto G = loader(get_graph_resource_path("tinyCG.txt"));
         G_ = std::make_unique<Graph>(std::move(G));
     }
 
@@ -44,4 +46,3 @@ TEST_F(DepthFirstPathTests, PathFromVertex0ToVertex1) {
 
     ASSERT_TRUE(container_value_equals(expected, path));
 }
-

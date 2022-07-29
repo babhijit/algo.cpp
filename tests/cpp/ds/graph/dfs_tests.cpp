@@ -1,11 +1,12 @@
-#include <memory>
-
 #include <gtest/gtest.h>
 
 #include <graph/graph.hpp>
 #include <graph/depth_first_search.hpp>
+#include <utils/graph_loader.hpp>
 
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
+
+using namespace algo::cpp::ds::tests::utils;
 
 class DepthFirstSearchTests : public ::testing::Test {
 protected:
@@ -14,8 +15,8 @@ protected:
 
 protected:
     void SetUp() override {
-        auto graph_file = get_graph_resource_path("tinyG.txt");
-        auto G = algo::cpp::ds::load_graph_from_file(graph_file);
+        algo::cpp::ds::utils::GraphLoader<Graph> loader;
+        auto G = loader(get_graph_resource_path("tinyG.txt"));
         G_ = std::make_unique<Graph>(std::move(G));
     }
 

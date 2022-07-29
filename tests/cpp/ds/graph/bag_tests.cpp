@@ -2,7 +2,8 @@
 
 #include <gtest/gtest.h>
 
-#include <graph/bag.hpp>
+#include "sequence/bag.hpp"
+
 
 class BagTests : public ::testing::Test {
 protected:

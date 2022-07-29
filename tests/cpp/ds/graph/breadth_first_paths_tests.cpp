@@ -4,9 +4,12 @@
 
 #include <graph/graph.hpp>
 #include <graph/breadth_first_paths.hpp>
+#include <utils/graph_loader.hpp>
 
 #include "stl_compare_utils.hpp"
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
+
+using namespace algo::cpp::ds::tests::utils;
 
 class BreadthFirstPathsTests : public ::testing::Test {
 protected:
@@ -15,8 +18,8 @@ protected:
 protected:
     void SetUp() override {
         using namespace algo::cpp::ds;
-        auto graph_file = get_graph_resource_path("tinyCG.txt");
-        auto G = load_graph_from_file(std::move(graph_file));
+        algo::cpp::ds::utils::GraphLoader<Graph> loader;
+        auto G = loader(get_graph_resource_path("tinyCG.txt"));
         G_ = std::make_unique<Graph>(std::move(G));
     }
 

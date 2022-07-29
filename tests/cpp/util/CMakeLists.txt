@@ -1,9 +1,15 @@
 project(algo.cpp.tests.util)
 
-add_library(${PROJECT_NAME} INTERFACE)
+set(TEST_UTIL_HEADERS
+        include/stl_compare_utils.hpp
+        include/ds_resource_utils.hpp include/ds_loader_utils.hpp)
 
-set(TEST_UTIL_SOURCES stl_compare_utils.hpp)
+set(TEST_UTIL_SOURCES impl/graph_test_utils.cpp)
 
-target_sources(${PROJECT_NAME} INTERFACE ${TEST_UTIL_SOURCES})
+include_directories(include)
 
-target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR})
+add_library(${PROJECT_NAME} STATIC ${TEST_UTIL_HEADERS} ${TEST_UTIL_SOURCES})
+
+target_link_libraries(${PROJECT_NAME} algo.cpp.ds)
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)

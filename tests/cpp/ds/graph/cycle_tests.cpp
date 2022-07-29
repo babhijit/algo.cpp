@@ -1,8 +1,11 @@
 #include <gtest/gtest.h>
 
 #include <graph/cycle.hpp>
+#include <utils/graph_loader.hpp>
 
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
+
+using namespace algo::cpp::ds::tests::utils;
 
 class CycleTests : public ::testing::Test {
 
@@ -17,7 +20,8 @@ protected:
 };
 
 TEST_F(CycleTests, VerifyCycle) {
-    auto G = algo::cpp::ds::load_graph_from_file(get_graph_resource_path("tinyG.txt"));
+    algo::cpp::ds::utils::GraphLoader<Graph> loader;
+    auto G = loader(get_graph_resource_path("tinyG.txt"));
     auto cycle = Cycle(G);
 
     ASSERT_TRUE(cycle.has_cycle());
@@ -27,7 +31,6 @@ TEST_F(CycleTests, VerifyAcyclic) {
     Graph G(4);
     G.add_edge(0, 1);
     G.add_edge(2, 3);
-
 
     Cycle cycle(G);
     ASSERT_FALSE(cycle.has_cycle());

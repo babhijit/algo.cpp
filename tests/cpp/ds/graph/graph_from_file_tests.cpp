@@ -1,15 +1,16 @@
 #include <array>
 #include <random>
-#include <stdexcept>
 #include <vector>
 
 #include <gtest/gtest.h>
 
 #include <graph/graph.hpp>
+#include <utils/graph_loader.hpp>
 
-#include "graph_test_utils.hpp"
+#include <ds_resource_utils.hpp>
 
 using namespace algo::cpp::ds;
+using namespace algo::cpp::ds::tests::utils;
 
 /*
  * To run this test ensure that the IDE sets the current working directory to "resources" directory
@@ -80,8 +81,8 @@ private:
         namespace fs = std::filesystem;
         auto path = fs::current_path();
 
-        const std::string graph_file = "tinyG.txt";
-        auto G = load_graph_from_file(get_graph_resource_path(graph_file));
+        algo::cpp::ds::utils::GraphLoader<Graph> loader;
+        auto G = loader(get_graph_resource_path("tinyG.txt"));
         G_ = std::make_unique<Graph>(std::move(G));
     }
 };

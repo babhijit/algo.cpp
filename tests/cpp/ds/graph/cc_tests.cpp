@@ -4,9 +4,12 @@
 #include <vector>
 
 #include <graph/cc.hpp>
+#include <utils/graph_loader.hpp>
 
 #include <stl_compare_utils.hpp>
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
+
+using namespace algo::cpp::ds::tests::utils;
 
 class CCTests : public ::testing::Test {
 
@@ -21,7 +24,8 @@ protected:
 
 protected:
     void SetUp() override {
-        auto G = algo::cpp::ds::load_graph_from_file(get_graph_resource_path(graph_filename));
+        algo::cpp::ds::utils::GraphLoader<Graph> loader;
+        auto G = loader(get_graph_resource_path(graph_filename));
         G_ = std::make_unique<Graph>(std::move(G));
         cc_ = std::make_unique<CC>(*G_);
     }

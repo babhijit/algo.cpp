@@ -1,5 +1,3 @@
-#include <filesystem>
-#include <fstream>
 #include <sstream>
 #include <stdexcept>
 #include <vector>
@@ -95,27 +93,6 @@ namespace algo::cpp::ds {
     void Graph::validate_vertex(int v) const {
         if ((v < 0) || (v >= V_))
             throw std::invalid_argument(std::string("v must be between 0 and ") + std::to_string(V_));
-    }
-
-    Graph load_graph_from_file(std::filesystem::path file_path) {
-        std::ifstream in(file_path);
-
-        int V;
-        in >> V;
-
-        int E;
-        in >> E;
-
-        if (E < 0) throw std::invalid_argument("Number of Edges in a Graph must be positive");
-
-        Graph G(V);
-        int v, w;
-        for (int e = 0; e < E; ++e) {
-            in >> v >> w;
-            G.add_edge(v, w);
-        }
-
-        return G;
     }
 
 }

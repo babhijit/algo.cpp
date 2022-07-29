@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <vector>
 
-#include "bag.hpp"
+#include "sequence/bag.hpp"
 
 namespace algo::cpp::ds {
 
@@ -46,8 +46,6 @@ namespace algo::cpp::ds {
 
         void validate_vertex(int v) const;
     };
-
-    Graph load_graph_from_file(std::filesystem::path file_path);
 }
 
 #endif //ALGO_CPP_GRAPH_HPP

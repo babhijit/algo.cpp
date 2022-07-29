@@ -1,11 +1,12 @@
 #include <gtest/gtest.h>
 
-
 #include <graph/graph.hpp>
 #include <graph/two_color.hpp>
+#include <utils/graph_loader.hpp>
 
-#include "graph_test_utils.hpp"
+#include "ds_resource_utils.hpp"
 
+using namespace algo::cpp::ds::tests::utils;
 
 class TwoColorTests : public ::testing::Test {
 protected:
@@ -20,14 +21,16 @@ protected:
 
 
 TEST_F(TwoColorTests, BipartiteGraph) {
-    auto G = algo::cpp::ds::load_graph_from_file(get_graph_resource_path("tinyBipartite.txt"));
+    algo::cpp::ds::utils::GraphLoader<Graph> loader;
+    auto G = loader(get_graph_resource_path("tinyBipartite.txt"));
     TwoColor two_color(G);
 
     ASSERT_TRUE(two_color.is_bipartite());
 }
 
 TEST_F(TwoColorTests, NonBipartiteGraph) {
-    auto G = algo::cpp::ds::load_graph_from_file(get_graph_resource_path("mediumG.txt"));
+    algo::cpp::ds::utils::GraphLoader<Graph> loader;
+    auto G = loader(get_graph_resource_path("mediumG.txt"));
     TwoColor two_color(G);
 
     ASSERT_FALSE(two_color.is_bipartite());
