@@ -31,8 +31,3 @@ Digraph
 
 Problems
 ========
-
-Arrays
-------
-
-* `733` [Flood Fill](src/cpp/problems/array/floodfill_733/FloodFill.MD) #Easy #DepthFirst
