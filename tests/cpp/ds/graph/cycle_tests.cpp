@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
 
 #include <graph/cycle.hpp>
-#include <utils/graph_loader.hpp>
 
-#include "ds_resource_utils.hpp"
+#include "ds_loader_utils.hpp"
 
 using namespace algo::cpp::ds::tests::utils;
 
@@ -20,8 +19,8 @@ protected:
 };
 
 TEST_F(CycleTests, VerifyCycle) {
-    algo::cpp::ds::utils::GraphLoader<Graph> loader;
-    auto G = loader(get_graph_resource_path("tinyG.txt"));
+    using namespace algo::cpp::ds::tests::utils;
+    auto G = load_graph("tinyG.txt");
     auto cycle = Cycle(G);
 
     ASSERT_TRUE(cycle.has_cycle());

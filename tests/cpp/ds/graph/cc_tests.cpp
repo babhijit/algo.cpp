@@ -4,10 +4,9 @@
 #include <vector>
 
 #include <graph/cc.hpp>
-#include <utils/graph_loader.hpp>
 
 #include <stl_compare_utils.hpp>
-#include "ds_resource_utils.hpp"
+#include "ds_loader_utils.hpp"
 
 using namespace algo::cpp::ds::tests::utils;
 
@@ -24,8 +23,7 @@ protected:
 
 protected:
     void SetUp() override {
-        algo::cpp::ds::utils::GraphLoader<Graph> loader;
-        auto G = loader(get_graph_resource_path(graph_filename));
+        auto G = load_graph(graph_filename);
         G_ = std::make_unique<Graph>(std::move(G));
         cc_ = std::make_unique<CC>(*G_);
     }

@@ -30,9 +30,9 @@ set(GRAPH_SOURCES impl/graph/graph.cpp
         impl/graph/two_color.cpp)
 
 # Digraph Data Structures
-set(DIGRAPH_HEADERS include/digraph/digraph.hpp include/utils/reverse_graph.hpp)
+set(DIGRAPH_HEADERS include/digraph/digraph.hpp include/utils/reverse_graph.hpp include/digraph/directed_dfs.hpp)
 
-set(DIGRAPH_SOURCES impl/digraph/digraph.cpp)
+set(DIGRAPH_SOURCES impl/digraph/digraph.cpp impl/digraph/directed_dfs.cpp)
 
 # Utility Functions
 set(UTIL_HEADERS include/utils/reverse_graph.hpp include/utils/graph_loader.hpp)

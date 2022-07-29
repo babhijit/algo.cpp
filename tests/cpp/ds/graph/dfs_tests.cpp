@@ -2,9 +2,8 @@
 
 #include <graph/graph.hpp>
 #include <graph/depth_first_search.hpp>
-#include <utils/graph_loader.hpp>
 
-#include "ds_resource_utils.hpp"
+#include "ds_loader_utils.hpp"
 
 using namespace algo::cpp::ds::tests::utils;
 
@@ -15,8 +14,8 @@ protected:
 
 protected:
     void SetUp() override {
-        algo::cpp::ds::utils::GraphLoader<Graph> loader;
-        auto G = loader(get_graph_resource_path("tinyG.txt"));
+        using namespace algo::cpp::ds::tests::utils;
+        auto G = load_graph("tinyG.txt");
         G_ = std::make_unique<Graph>(std::move(G));
     }
 
@@ -87,4 +86,3 @@ TEST_F(DepthFirstSearchTests, ConnectedVerticesCountForVertex0) {
     DepthFirstSearch dfs(*G_, 0);
     ASSERT_EQ(7, dfs.count());
 }
-

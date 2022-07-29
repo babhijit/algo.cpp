@@ -2,7 +2,7 @@ project(algo.cpp.test.cpp.ds.digraph)
 
 set(TEST_SOURCES
         digraph_from_file_tests.cpp
-        digraph_tests.cpp)
+        digraph_tests.cpp directed_dfs_tests.cpp)
 
 add_executable(ds_digraph_tests ${TEST_SOURCES})
 

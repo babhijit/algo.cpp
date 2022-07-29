@@ -7,7 +7,7 @@
 #include <graph/graph.hpp>
 #include <utils/graph_loader.hpp>
 
-#include <ds_resource_utils.hpp>
+#include <ds_loader_utils.hpp>
 
 using namespace algo::cpp::ds;
 using namespace algo::cpp::ds::tests::utils;
@@ -78,11 +78,8 @@ protected:
 
 private:
     void load_graph_from_resource() {
-        namespace fs = std::filesystem;
-        auto path = fs::current_path();
-
-        algo::cpp::ds::utils::GraphLoader<Graph> loader;
-        auto G = loader(get_graph_resource_path("tinyG.txt"));
+        using namespace algo::cpp::ds::tests::utils;
+        auto G = load_graph("tinyG.txt");
         G_ = std::make_unique<Graph>(std::move(G));
     }
 };

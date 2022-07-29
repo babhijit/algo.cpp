@@ -3,10 +3,8 @@
 #include <gtest/gtest.h>
 
 #include <digraph/digraph.hpp>
-#include <utils/graph_loader.hpp>
 
-#include <ds_resource_utils.hpp>
-
+#include <ds_loader_utils.hpp>
 #include <stl_compare_utils.hpp>
 
 using namespace algo::cpp::ds::tests::utils;
@@ -22,10 +20,9 @@ protected:
 protected:
     void SetUp() override {
         using namespace algo::cpp::ds;
-        using namespace algo::cpp::ds::utils;
+        using namespace algo::cpp::ds::tests::utils;
 
-        GraphLoader<Digraph> graph_loader;
-        auto G = graph_loader(get_digraph_resource_path("tinyDG.txt"));
+        auto G = load_digraph("tinyDG.txt");
 
         G_ = std::make_unique<Digraph>(std::move(G));
     }
