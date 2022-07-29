@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <vector>
 
-#include "sequence/bag.hpp"
+#include <sequence/bag.hpp>
 
 namespace algo::cpp::ds {
 

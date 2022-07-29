@@ -34,12 +34,12 @@ set(DIGRAPH_HEADERS
         include/digraph/digraph.hpp
         include/utils/reverse_graph.hpp
         include/digraph/directed_dfs.hpp
-        include/digraph/directed_cycle.hpp)
+        include/digraph/directed_cycle.hpp include/digraph/topological.hpp include/digraph/depth_first_order.hpp)
 
 set(DIGRAPH_SOURCES
         impl/digraph/digraph.cpp
         impl/digraph/directed_dfs.cpp
-        impl/digraph/directed_cycle.cpp)
+        impl/digraph/directed_cycle.cpp impl/digraph/topological.cpp impl/digraph/depth_first_order.cpp)
 
 # Utility Functions
 set(UTIL_HEADERS include/utils/reverse_graph.hpp include/utils/graph_loader.hpp)

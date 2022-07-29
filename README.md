@@ -20,6 +20,8 @@ Digraph
 * [Graph](src/cpp/ds/include/digraph/digraph.hpp)
 * [DirectedDFS](src/cpp/ds/include/digraph/directed_dfs.hpp)
 * [DirectedCycle](src/cpp/ds/include/digraph/directed_cycle.hpp)
+* [DepthFirstOrder](src/cpp/ds/include/digraph/depth_first_order.hpp)
+* [DirectedCycle](src/cpp/ds/include/digraph/topological.hpp)
 
 
 ---------------------------------------------------------

@@ -8,7 +8,7 @@
 #include <list>
 #include <vector>
 
-#include <digraph/digraph.hpp>
+#include "digraph.hpp"
 
 namespace algo::cpp::ds {
 
