@@ -11,3 +11,4 @@ gtest_discover_tests(sanity_tests)
 
 add_subdirectory(util)
 add_subdirectory(ds)
+add_subdirectory(problems)
