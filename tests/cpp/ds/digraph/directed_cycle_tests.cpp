@@ -4,8 +4,8 @@
 #include <digraph/digraph.hpp>
 #include <digraph/directed_cycle.hpp>
 
-#include <ds_loader_utils.hpp>
-#include <stl_compare_utils.hpp>
+#include "res/graph_loader_utils.hpp"
+#include "res/stl_compare_utils.hpp"
 
 using namespace algo::cpp::ds;
 using namespace algo::cpp::ds::tests;

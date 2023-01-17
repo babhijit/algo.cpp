@@ -4,7 +4,7 @@
 
 #include <digraph/digraph.hpp>
 
-#include <ds_loader_utils.hpp>
+#include "res/graph_loader_utils.hpp"
 
 using namespace algo::cpp::ds::tests::utils;
 

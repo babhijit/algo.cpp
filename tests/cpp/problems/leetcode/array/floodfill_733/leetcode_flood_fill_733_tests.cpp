@@ -2,7 +2,7 @@
 
 #include <flood_fill.hpp>
 
-#include "stl_compare_utils.hpp"
+#include "res/stl_compare_utils.hpp"
 
 using namespace algo::problems::leetcode::array::floodfill;
 

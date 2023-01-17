@@ -5,8 +5,8 @@
 #include <graph/graph.hpp>
 #include <graph/breadth_first_paths.hpp>
 
-#include "stl_compare_utils.hpp"
-#include "ds_loader_utils.hpp"
+#include "res/stl_compare_utils.hpp"
+#include "res/graph_loader_utils.hpp"
 
 using namespace algo::cpp::ds::tests::utils;
 

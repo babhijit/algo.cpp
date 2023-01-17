@@ -1,10 +1,9 @@
-#include "ds_loader_utils.hpp"
+#include "res/ds_resource_utils.hpp"
 
-#include <filesystem>
+#include "utils/graph_loader.hpp"
+#include "graph/graph.hpp"
+#include "digraph/digraph.hpp"
 
-#include <utils/graph_loader.hpp>
-
-#include "ds_resource_utils.hpp"
 
 namespace algo::cpp::ds::tests::utils {
 
@@ -19,5 +18,4 @@ namespace algo::cpp::ds::tests::utils {
         algo::cpp::ds::utils::GraphLoader<Digraph> loader;
         return loader(filepath);
     }
-
 }

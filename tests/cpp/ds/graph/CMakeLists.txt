@@ -1,8 +1,8 @@
 project(algo.cpp.test.cpp.ds.graph)
 
 set(TEST_SOURCES    bag_tests.cpp
-        ../../util/include/ds_resource_utils.hpp
-        ../../util/impl/graph_test_utils.cpp
+        ../../util/include/res/ds_resource_utils.hpp
+        ../../util/impl/res/graph_loader_utils.cpp
                     graph_tests.cpp
                     graph_from_file_tests.cpp
                     load_graphs_from_files_tests.cpp

@@ -5,7 +5,7 @@
 
 #include <utils/graph_loader.hpp>
 
-#include <ds_loader_utils.hpp>
+#include "res/graph_loader_utils.hpp"
 
 
 class DirectedDFSTests : public ::testing::Test {

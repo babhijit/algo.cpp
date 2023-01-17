@@ -1,15 +1,42 @@
 project(algo.cpp.tests.util)
 
-set(TEST_UTIL_HEADERS
-        include/stl_compare_utils.hpp
-        include/ds_resource_utils.hpp include/ds_loader_utils.hpp)
 
-set(TEST_UTIL_SOURCES impl/graph_test_utils.cpp impl/ds_loader_utils.cpp)
+set(RES_HEADERS
+        include/res/stl_compare_utils.hpp
+        include/res/ds_resource_utils.hpp
+        include/res/loader_utils.hpp
+        include/res/test_resource_utils.hpp
+        include/res/graph_loader_utils.hpp
+        include/res/json/mapper/mapper.hpp
+        include/res/json/json_parser.hpp
+        include/res/json/mapper/bst_mapper.hpp
+        )
 
-include_directories(include)
+set(RES_SOURCES
+        impl/res/graph_loader_utils.cpp
+        impl/res/loader_utils.cpp
+        impl/res/ds_loader_utils.cpp
+        impl/res/test_resource_utils.cpp
+        )
+
+set(LOADER_HEADERS include/loader/base_loader.hpp
+        include/loader/bst/load_bst.hpp
+        include/loader/arrays/load_int_array.hpp)
+
+set(LOADER_SOURCES impl/loader/base_loader.cpp
+        impl/loader/bst/load_bst.cpp
+        impl/loader/arrays/load_int_array.cpp)
+
+set(DS_HEADERS include/ds/tree_node.hpp)
+
+set(TEST_UTIL_HEADERS ${RES_HEADERS} ${LOADER_HEADERS} ${DS_HEADERS})
+
+set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES})
+
+include_directories(include include/loader/bst include/loader/arrays include/res include/res/json)
 
 add_library(${PROJECT_NAME} STATIC ${TEST_UTIL_HEADERS} ${TEST_UTIL_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} algo.cpp.ds)
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} algo.cpp.ds)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
