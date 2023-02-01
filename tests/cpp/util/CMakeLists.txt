@@ -21,7 +21,8 @@ set(RES_SOURCES
 
 set(LOADER_HEADERS include/loader/base_loader.hpp
         include/loader/bst/load_bst.hpp
-        include/loader/arrays/load_int_array.hpp)
+        include/loader/arrays/load_int_array.hpp
+        )
 
 set(LOADER_SOURCES impl/loader/base_loader.cpp
         impl/loader/bst/load_bst.cpp
@@ -37,6 +38,6 @@ include_directories(include include/loader/bst include/loader/arrays include/res
 
 add_library(${PROJECT_NAME} STATIC ${TEST_UTIL_HEADERS} ${TEST_UTIL_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} algo.cpp.ds)
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} algo.cpp.ds algo.cpp.problems.leetcode.ds.tree.bst)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
