@@ -32,12 +32,21 @@ set(DS_HEADERS include/ds/tree_node.hpp)
 
 set(TEST_UTIL_HEADERS ${RES_HEADERS} ${LOADER_HEADERS} ${DS_HEADERS})
 
-set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES})
+set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES} impl/loader/list/load_int_list.cpp include/loader/list/load_int_list.hpp)
 
-include_directories(include include/loader/bst include/loader/arrays include/res include/res/json)
+include_directories(
+        include
+        include/loader/bst
+        include/loader/list
+        include/loader/arrays
+        include/res
+        include/res/json)
 
 add_library(${PROJECT_NAME} STATIC ${TEST_UTIL_HEADERS} ${TEST_UTIL_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} algo.cpp.ds algo.cpp.problems.leetcode.ds.tree.bst)
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES}
+        algo.cpp.ds
+        algo.cpp.problems.leetcode.ds.list.linkedlist
+        algo.cpp.problems.leetcode.ds.tree.bst)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)

@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include <longest_consecutive_sequence.hpp>
+#include "longest_consecutive_sequence.hpp"
 
 #include "res/ds_resource_utils.hpp"
 #include "../../utils/include/file_utils.hpp"
@@ -44,7 +44,7 @@ TEST_F(LongestConsecutiveSequenceTests, LeetCodeSample2) {
 
 TEST_F(LongestConsecutiveSequenceTests, RunTestsFromResource) {
     using namespace algo::cpp::ds::tests::utils::leetcode;
-    auto path = get_test_ds_dir("array");
+    auto path = get_test_ds_dir("hashtable");
     auto usecase_dir = path / "longest_consecutive_seq_128";
 
     BaseLoader loader;
