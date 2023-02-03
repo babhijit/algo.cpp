@@ -1,5 +1,5 @@
-#ifndef ALGO_CPP_BST_RIGHT_SIDE_VIEW_HPP
-#define ALGO_CPP_BST_RIGHT_SIDE_VIEW_HPP
+#ifndef ALGO_CPP_BT_RIGHT_SIDE_VIEW_HPP
+#define ALGO_CPP_BT_RIGHT_SIDE_VIEW_HPP
 
 #include <queue>
 #include <utility>
@@ -7,11 +7,11 @@
 
 #include <tree_node.hpp>
 
-namespace algo::cpp::problems::bst::right_side_view_199 {
+namespace algo::cpp::problems::bt::right_side_view_199 {
 
     using namespace algo::cpp::leetcode::ds;
 
-    class BSTRightSideView {
+    class BinaryTreeRightSideView {
     public:
         std::vector<int> rightSideView(TreeNode *root);
 
@@ -23,4 +23,4 @@ namespace algo::cpp::problems::bst::right_side_view_199 {
 
 } // right_side_view_199
 
-#endif //ALGO_CPP_BST_RIGHT_SIDE_VIEW_HPP
+#endif //ALGO_CPP_BT_RIGHT_SIDE_VIEW_HPP

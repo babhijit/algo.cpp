@@ -1,11 +1,11 @@
-project(algo.cpp.tests.cpp.problems.leetcode.tree.bst.bst_right_side_view_199)
+project(algo.cpp.tests.cpp.problems.leetcode.tree.binary_tree.right_side_view_199)
 
-set(PROJECT_BINARY bst_right_side_view_199_tests)
+set(PROJECT_BINARY right_side_view_199_tests)
 
 find_package(Boost REQUIRED COMPONENTS json)
 include_directories(${Boost_INCLUDE_DIR})
 
-add_executable(${PROJECT_BINARY} bst_right_side_view_199_tests.cpp test_case.hpp)
+add_executable(${PROJECT_BINARY} right_side_view_199_tests.cpp test_case.hpp)
 
 target_link_libraries(
         ${PROJECT_BINARY}
@@ -16,7 +16,7 @@ target_link_libraries(
         algo.cpp.tests.util
         algo.cpp.tests.leetcode.utils
         algo.cpp.problems.leetcode.ds.tree.bst
-        algo.cpp.problems.leetcode.tree.bst.right_side_view_199
+        algo.cpp.problems.leetcode.tree.binary_tree.right_side_view_199
 )
 
 gtest_discover_tests(${PROJECT_BINARY})
