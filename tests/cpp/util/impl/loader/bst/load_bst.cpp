@@ -16,6 +16,9 @@ namespace algo::cpp::ds::tests::utils {
 
     TreeNode *LoadBst::load_bst(std::string input) {
         boost::trim(input);
+        if(input.empty()) {
+            return nullptr;
+        }
 
         std::vector<std::string> values;
         boost::split(values, input, boost::is_any_of(","));
