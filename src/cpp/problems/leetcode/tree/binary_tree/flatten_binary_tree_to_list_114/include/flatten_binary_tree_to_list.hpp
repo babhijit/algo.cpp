@@ -12,15 +12,14 @@ namespace algo::cpp::problems::bt::flatten_binary_tree_to_list {
 
     class FlattenBinaryTreeToList {
 
-        using HeadTailPair = std::pair<TreeNode*, TreeNode*>;
-
     public:
         void flatten(TreeNode *root);
 
     private:
         static bool is_leaf(TreeNode *node);
+        static bool is_null(TreeNode *node);
 
-        HeadTailPair preorder(TreeNode* node);
+        TreeNode* preorder(TreeNode* node);
     };
 
 } // flatten_binary_tree_to_list
