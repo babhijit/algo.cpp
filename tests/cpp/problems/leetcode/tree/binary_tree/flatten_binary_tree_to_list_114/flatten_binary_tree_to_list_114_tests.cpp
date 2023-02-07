@@ -85,7 +85,6 @@ TEST_F(FlattenBinaryTreeToListTests, RunTestsFromResource) {
     auto path = get_test_ds_dir("binary_tree");
     auto usecase_dir = path / "flatten_binary_tree_to_list_114";
 
-    FlattenBinaryTreeToList solution;
     for (const auto &testcase: std::filesystem::directory_iterator(usecase_dir)) {
         TestCase tc(testcase);
 
