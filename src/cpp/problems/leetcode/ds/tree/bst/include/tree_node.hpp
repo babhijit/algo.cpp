@@ -20,7 +20,14 @@ namespace algo::cpp::leetcode::ds {
 
         static std::string to_string(TreeNode *root);
 
+        static std::string preorder_to_string(TreeNode *root);
+
         static void add_to_queue(TreeNode *node, std::queue<TreeNode *> &q);
+
+        static void add_to_queue_preorder(TreeNode *node, std::queue<TreeNode *> &q);
+
+    private:
+        static std::string to_string_from_queue(std::queue<TreeNode *> &q);
 
     };
 
