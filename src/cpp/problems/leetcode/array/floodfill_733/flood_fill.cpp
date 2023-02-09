@@ -32,11 +32,11 @@ namespace algo::problems::leetcode::array::floodfill {
     void FloodFill::floodfill(IntVector2D &image, BoolVector2D &marked,
                               int sr, int sc,
                               int cell_color, int new_color) {
-        // row range check
+        // row range prev_index
         if (sr < 0 || sr >= image.size()) {
             return;
         }
-        // column range check
+        // column range prev_index
         if (sc < 0 || sc >= image[0].size()) {
             return;
         }
@@ -45,7 +45,7 @@ namespace algo::problems::leetcode::array::floodfill {
         if (marked[sr][sc])                 return;
         marked[sr][sc] = true;
 
-        // check if color is matching
+        // prev_index if color is matching
         if (image[sr][sc] != cell_color)    return;
         image[sr][sc] = new_color;
 

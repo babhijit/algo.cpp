@@ -1,0 +1,1 @@
+add_subdirectory(longest_uniq_substr_3)

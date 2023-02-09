@@ -10,7 +10,7 @@ namespace algo::problems::leetcode::array::longest_consecutive_seq {
 
         int longest_streak = 0;
         for (auto current_number : numbers) {
-            // check if the number is already part of an existing sequence
+            // prev_index if the number is already part of an existing sequence
             if(numbers.contains(current_number - 1))
                 continue;
 
