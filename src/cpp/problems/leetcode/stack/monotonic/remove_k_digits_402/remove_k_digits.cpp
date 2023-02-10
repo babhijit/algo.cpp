@@ -4,6 +4,8 @@
 #include <memory>
 #include <stack>
 #include <string>
+#include <stack>
+#include <sstream>
 
 namespace algo::problems::leetcode::stack::remove_k_digits {
 
@@ -30,21 +32,34 @@ namespace algo::problems::leetcode::stack::remove_k_digits {
             monotonic.push(digit);
         }
 
-        while(k) {
+        while (k) {
             monotonic.pop();
             --k;
         }
 
-        std::string result;
-        while(!monotonic.empty()) {
-            result.insert(result.begin(), monotonic.top());
+        std::stack<char> digits;
+        while (!monotonic.empty()) {
+            digits.push(monotonic.top());
             monotonic.pop();
         }
 
-        auto pos = result.find_first_not_of('0');
-        if (pos == result.npos)
-            return "0";
-        return result.substr(pos);
+        std::ostringstream oss;
+        bool skip_leading_zeros = true;
+        while (!digits.empty()) {
+            auto digit = digits.top();
+            digits.pop();
+            if (skip_leading_zeros) {
+                if (digit != '0') {
+                    skip_leading_zeros = false;
+                } else {
+                    continue;
+                }
+            }
+            oss << digit;
+        }
+
+        auto result = oss.str();
+        return result.empty() ? "0" : result;
     }
 
 }
