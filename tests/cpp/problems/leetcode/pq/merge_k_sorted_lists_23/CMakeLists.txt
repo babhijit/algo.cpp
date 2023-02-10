@@ -1,4 +1,4 @@
-project(algo.cpp.tests.cpp.problems.leetcode.list.merge_k_sorted_lists_23)
+project(algo.cpp.tests.cpp.problems.leetcode.pq.merge_k_sorted_lists_23)
 
 find_package(Boost REQUIRED COMPONENTS json)
 include_directories(${Boost_INCLUDE_DIR})
@@ -16,7 +16,7 @@ target_link_libraries(
         algo.cpp.problems.leetcode.ds.list.linkedlist
         algo.cpp.tests.util
         algo.cpp.tests.leetcode.utils
-        algo.cpp.problems.leetcode.list.merge_k_sorted_23
+        algo.cpp.problems.leetcode.pq.merge_k_sorted_23
 )
 
 gtest_discover_tests(${PROJECT_BINARY})

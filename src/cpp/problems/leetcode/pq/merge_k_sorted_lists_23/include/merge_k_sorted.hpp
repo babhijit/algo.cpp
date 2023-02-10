@@ -7,7 +7,7 @@
 
 #include <list_node.hpp>
 
-namespace algo::problems::leetcode::list::merge_k_sorted {
+namespace algo::problems::leetcode::pq::merge_k_sorted {
 
     using namespace algo::cpp::leetcode::ds;
 

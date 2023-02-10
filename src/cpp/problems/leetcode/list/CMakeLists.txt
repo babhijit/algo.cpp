@@ -1,2 +1,1 @@
 add_subdirectory(remove_nth_node_from_end_19)
-add_subdirectory(merge_k_sorted_lists_23)

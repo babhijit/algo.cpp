@@ -1,4 +1,4 @@
-project(algo.cpp.problems.leetcode.list.merge_k_sorted_23)
+project(algo.cpp.problems.leetcode.pq.merge_k_sorted_23)
 
 include_directories(include)
 

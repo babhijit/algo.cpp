@@ -10,7 +10,7 @@
 #include "test_case.hpp"
 
 
-using namespace algo::problems::leetcode::list::merge_k_sorted;
+using namespace algo::problems::leetcode::pq::merge_k_sorted;
 using namespace algo::cpp::ds::tests::utils;
 
 class MergeKSortedTests : public ::testing::Test {
@@ -46,7 +46,7 @@ TEST_F(MergeKSortedTests, LeetCodeSample2) {
 
 TEST_F(MergeKSortedTests, RunTestsFromResource) {
     using namespace algo::cpp::ds::tests::utils::leetcode;
-    auto path = get_test_ds_dir("list");
+    auto path = get_test_ds_dir("pq");
     auto usecase_dir = path / "merge_k_sorted_23";
 
     BaseLoader loader;

@@ -2,7 +2,7 @@
 
 #include <memory>
 
-namespace algo::problems::leetcode::list::merge_k_sorted {
+namespace algo::problems::leetcode::pq::merge_k_sorted {
 
     ListNode *MergeKSorted::mergeKLists(std::vector<ListNode *> &lists) {
         std::priority_queue<ListNode*, std::vector<ListNode*>, ListNodeComparer> pq;
