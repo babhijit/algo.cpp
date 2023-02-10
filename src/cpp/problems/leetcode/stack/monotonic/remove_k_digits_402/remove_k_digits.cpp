@@ -4,7 +4,6 @@
 #include <memory>
 #include <stack>
 #include <string>
-#include <stack>
 #include <sstream>
 
 namespace algo::problems::leetcode::stack::remove_k_digits {
