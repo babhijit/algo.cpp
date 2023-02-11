@@ -2,16 +2,19 @@
 #define ALGO_CPP_ISLAND_PERIMETER_HPP
 
 #include <vector>
+#include <utility>
 
 namespace algo::problems::leetcode::array::island_perimeter {
 
     class IslandPerimeter {
     public:
-        template<typename T>
-        using Vector2D = std::vector<std::vector<T>>;
-
+        using Grid = std::vector<std::vector<int>>;
+        static constexpr int LAND = 1;
     public:
-        int islandPerimeter(Vector2D<int>& grid);
+        int islandPerimeter(Grid& grid);
+
+    private:
+        inline bool has_land(int cell);
     };
 
 }
