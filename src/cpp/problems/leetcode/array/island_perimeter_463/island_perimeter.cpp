@@ -6,40 +6,19 @@ namespace algo::problems::leetcode::array::island_perimeter {
 
     int IslandPerimeter::islandPerimeter(Grid &grid) {
 
-        auto const R = grid.size();
-        auto const C = grid[0].size();
+        rows = static_cast<int>(grid.size());
+        columns = static_cast<int>(grid[0].size());
 
-        int up, down, left, right;
         int perimeter = 0;
 
-        for (int r = 0; r < R; ++r) {
-            for (int c = 0; c < C; ++c) {
+        for (int r = 0; r < rows; ++r) {
+            for (int c = 0; c < columns; ++c) {
                 if (has_land(grid[r][c])) {
-                    if (r == 0) {
-                        up = 0;
-                    } else {
-                        up = grid[r - 1][c];
-                    }
-
-                    if (c == 0) {
-                        left = 0;
-                    } else {
-                        left = grid[r][c - 1];
-                    }
-
-                    if (r == R - 1 ) {
-                        down = 0;
-                    } else {
-                        down = grid[r + 1][c];
-                    }
-
-                    if (c == C - 1) {
-                        right = 0;
-                    } else {
-                        right = grid[r][c + 1];
-                    }
-
-                    perimeter += (4 - (left + right + down + up));
+                    auto neighbouring_lands = get_neighbouring_land(grid, r, c - 1) +
+                                              get_neighbouring_land(grid, r, c + 1) +
+                                              get_neighbouring_land(grid, r - 1, c) +
+                                              get_neighbouring_land(grid, r + 1, c);
+                    perimeter += (4 - neighbouring_lands);
                 }
             }
         }
@@ -49,6 +28,13 @@ namespace algo::problems::leetcode::array::island_perimeter {
 
     bool IslandPerimeter::has_land(int cell) {
         return cell == LAND;
+    }
+
+    int IslandPerimeter::get_neighbouring_land(IslandPerimeter::Grid &grid, int r, int c) {
+        if ((r < 0) || (r >= rows))     return 0;
+        if ((c < 0) || (c >= columns))  return 0;
+
+        return grid[r][c];
     }
 
 }
