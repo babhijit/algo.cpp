@@ -18,9 +18,9 @@ namespace algo::problems::leetcode::array::game_of_life {
     private:
         int getNextLifeState(const Matrix &board, const int row, const int column);
 
-        int getCurrentLifeState(const Matrix& board, const int row, const int column);
+        static int getCurrentLifeState(const Matrix& board, const int row, const int column);
 
-        int getAliveNeighbours(const Matrix &board, const int row, const int column);
+        static int getAliveNeighbours(const Matrix &board, const int row, const int column);
 
         inline bool isUnderPopulation(const int aliveNeighbours) const { return aliveNeighbours < 2; }
 

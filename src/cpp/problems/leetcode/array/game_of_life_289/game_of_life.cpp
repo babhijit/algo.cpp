@@ -4,13 +4,13 @@
 
 namespace algo::problems::leetcode::array::game_of_life {
 
-    void GameOfLife::gameOfLife(Matrix& board) {
+    void GameOfLife::gameOfLife(Matrix &board) {
         const auto ROWS = board.size();
         const auto COLUMNS = board[0].size();
 
         Matrix original(board);
-        for (int row=0; row<ROWS; ++row) {
-            for(int column=0; column<COLUMNS; ++column) {
+        for (int row = 0; row < ROWS; ++row) {
+            for (int column = 0; column < COLUMNS; ++column) {
                 board[row][column] = getNextLifeState(original, row, column);
             }
         }
@@ -54,8 +54,8 @@ namespace algo::problems::leetcode::array::game_of_life {
         return aliveNeighbours;
     }
 
-    int GameOfLife::getCurrentLifeState(const Matrix& board, const int row, const int column) {
-        if((row >= 0) && (row < board.size())) {
+    int GameOfLife::getCurrentLifeState(const Matrix &board, const int row, const int column) {
+        if ((row >= 0) && (row < board.size())) {
             if ((column >= 0) && (column < board[row].size())) {
                 return board[row][column];
             }
