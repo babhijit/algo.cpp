@@ -42,19 +42,19 @@ namespace algo::problems::leetcode::array::game_of_life {
         const int UP = row - 1;
         const int DOWN = row + 1;
 
-        aliveNeighbours += getCurrentLifeState(board, row, LEFT);
-        aliveNeighbours += getCurrentLifeState(board, row, RIGHT);
-        aliveNeighbours += getCurrentLifeState(board, UP, column);
-        aliveNeighbours += getCurrentLifeState(board, UP, LEFT);
-        aliveNeighbours += getCurrentLifeState(board, UP, RIGHT);
-        aliveNeighbours += getCurrentLifeState(board, DOWN, column);
-        aliveNeighbours += getCurrentLifeState(board, DOWN, LEFT);
-        aliveNeighbours += getCurrentLifeState(board, DOWN, RIGHT);
+        aliveNeighbours += getAliveNeighbour(board, row, LEFT);
+        aliveNeighbours += getAliveNeighbour(board, row, RIGHT);
+        aliveNeighbours += getAliveNeighbour(board, UP, column);
+        aliveNeighbours += getAliveNeighbour(board, UP, LEFT);
+        aliveNeighbours += getAliveNeighbour(board, UP, RIGHT);
+        aliveNeighbours += getAliveNeighbour(board, DOWN, column);
+        aliveNeighbours += getAliveNeighbour(board, DOWN, LEFT);
+        aliveNeighbours += getAliveNeighbour(board, DOWN, RIGHT);
 
         return aliveNeighbours;
     }
 
-    int GameOfLife::getCurrentLifeState(const Matrix &board, const int row, const int column) {
+    int GameOfLife::getAliveNeighbour(const Matrix &board, const int row, const int column) {
         if ((row >= 0) && (row < board.size())) {
             if ((column >= 0) && (column < board[row].size())) {
                 return board[row][column];

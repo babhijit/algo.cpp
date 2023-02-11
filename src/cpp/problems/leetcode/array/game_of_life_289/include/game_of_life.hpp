@@ -18,7 +18,7 @@ namespace algo::problems::leetcode::array::game_of_life {
     private:
         int getNextLifeState(const Matrix &board, const int row, const int column);
 
-        static int getCurrentLifeState(const Matrix& board, const int row, const int column);
+        static int getAliveNeighbour(const Matrix& board, const int row, const int column);
 
         static int getAliveNeighbours(const Matrix &board, const int row, const int column);
 
