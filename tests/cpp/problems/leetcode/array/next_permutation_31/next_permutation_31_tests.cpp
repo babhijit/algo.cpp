@@ -64,7 +64,7 @@ TEST_F(NextPermutationTests, NextPermutainFor15432) {
 TEST_F(NextPermutationTests, RunTestsFromResource) {
     using namespace algo::cpp::ds::tests::utils::leetcode;
     auto path = get_test_ds_dir("array");
-    auto usecase_dir = path / "next_permutation_896";
+    auto usecase_dir = path / "next_permutation_31";
 
     BaseLoader loader;
     NextPermutation solution;

@@ -1,4 +1,4 @@
-project(algo.cpp.problems.leetcode.array.next_permutation_896)
+project(algo.cpp.problems.leetcode.array.next_permutation_31)
 
 include_directories(include)
 
