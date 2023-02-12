@@ -13,6 +13,8 @@ namespace algo {
         class MinDominoRotationsForEqualRow {
         private:
             static constexpr int FACES = 6;
+            static constexpr int TOP = 0;
+            static constexpr int BOTTOM = 1;
 
         public:
             int minDominoRotations(std::vector<int> &tops, std::vector<int> &bottoms);

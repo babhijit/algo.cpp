@@ -34,13 +34,17 @@ namespace algo::problems::leetcode::array::domino_min_rotations {
                 return -1;
             }
 
-            ++topCounts[topDie];
-            if (topCounts[topDie] > topCounts[topMostFreq])
-                topMostFreq = topDie;
+            if (topMostFreq) {
+                ++topCounts[topDie];
+                if (topCounts[topDie] > topCounts[topMostFreq])
+                    topMostFreq = topDie;
+            }
 
-            ++bottomCounts[bottomDie];
-            if (bottomCounts[bottomDie] > bottomCounts[bottomMostFreq])
-                bottomMostFreq = bottomDie;
+            if (bottomMostFreq) {
+                ++bottomCounts[bottomDie];
+                if (bottomCounts[bottomDie] > bottomCounts[bottomMostFreq])
+                    bottomMostFreq = bottomDie;
+            }
         }
 
         int maxOccurences = std::max(topCounts[topMostFreq], bottomCounts[bottomMostFreq]);
@@ -52,11 +56,11 @@ namespace algo::problems::leetcode::array::domino_min_rotations {
                                                        const int topDie,
                                                        const int bottomDie) {
         // check if topStartPattern pattern is broken
-        if ((topDie != topStartPattern) && (bottomDie != topStartPattern))
+        if (topStartPattern && (topDie != topStartPattern) && (bottomDie != topStartPattern))
             topStartPattern = 0;
 
         // check if bottomStartPattern pattern is broken
-        if ((bottomDie != bottomStartPattern) && (topDie != bottomStartPattern))
+        if (bottomStartPattern && (bottomDie != bottomStartPattern) && (topDie != bottomStartPattern))
             bottomStartPattern = 0;
 
         return bottomStartPattern || topStartPattern;
