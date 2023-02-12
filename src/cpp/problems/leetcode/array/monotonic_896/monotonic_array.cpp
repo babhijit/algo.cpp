@@ -3,11 +3,11 @@
 namespace algo::problems::leetcode::array::monotonic {
 
     MonotonicArray::Comparator lessEqual = [](const int a, const int b) {
-        return std::less_equal<int>()(a, b);
+        return std::less_equal<>()(a, b);
     };;
 
     MonotonicArray::Comparator greaterEqual = [](const int a, const int b) {
-        return std::greater_equal<int>()(a, b);
+        return std::greater_equal<>()(a, b);
     };;
 
 
@@ -15,9 +15,9 @@ namespace algo::problems::leetcode::array::monotonic {
         auto it = std::find_if_not(begin, end, [&begin](auto a) { return std::equal_to()(a, *begin); });
         if (it != end) {
             Comparator comp = lessEqual(*it, *std::prev(it)) ? lessEqual : greaterEqual;
-            return std::pair(comp, it);
+            return {comp, it};
         }
-        return std::pair(nullptr, it);
+        return {nullptr, it};
     }
 
     bool MonotonicArray::isMonotonic(std::vector<int> &nums) {

@@ -14,7 +14,7 @@ namespace algo::problems::leetcode::array::monotonic {
         using It = std::vector<int>::const_iterator;
 
     private:
-        std::pair<Comparator, It> smallestMonotone(It begin, It end);
+        static std::pair<Comparator, It> smallestMonotone(It begin, It end);
 
     public:
         bool isMonotonic(std::vector<int> &nums);
