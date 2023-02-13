@@ -15,14 +15,12 @@ namespace algo::problems::leetcode::array::next_permutation {
         auto greatest = getGreatestFromEnd(nums);
 
         // edge case: rollback to original if we are already at the highest lexicographical number
-        if (greatest == start) {
-            std::reverse(start, end);
-        } else {
+        if (greatest != start) {
             auto prevSmallest = std::prev(greatest);
             auto nextGreater = getNextGreater(greatest, end, *prevSmallest);
             std::iter_swap(prevSmallest, nextGreater);
-            std::reverse(greatest, end);
         }
+        std::reverse(greatest, end);
     }
 
     NextPermutation::IntVecItr NextPermutation::getGreatestFromEnd(std::vector<int> &nums) {
