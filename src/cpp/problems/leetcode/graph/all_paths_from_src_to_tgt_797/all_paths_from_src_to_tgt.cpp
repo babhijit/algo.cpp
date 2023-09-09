@@ -13,7 +13,7 @@ namespace algo::problems::leetcode::graph::all_paths_from_src_to_tgt {
 
         std::function<void(int, Path &)> dfs = [&](int v, Path &path) {
             if(v == target) {
-                paths.emplace_back(Path(path));
+                paths.emplace_back(path);
                 return;
             }
 
