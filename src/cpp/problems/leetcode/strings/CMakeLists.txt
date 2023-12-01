@@ -1,1 +1,2 @@
 add_subdirectory(longest_uniq_substr_3)
+add_subdirectory(equivalent_strings_1662)
