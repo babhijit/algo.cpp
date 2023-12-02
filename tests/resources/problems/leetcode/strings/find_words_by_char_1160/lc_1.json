@@ -1,0 +1,9 @@
+{
+  "words": [
+    "hello",
+    "world",
+    "leetcode"
+  ],
+  "chars": "welldonehoneyr",
+  "expected": 10
+}
