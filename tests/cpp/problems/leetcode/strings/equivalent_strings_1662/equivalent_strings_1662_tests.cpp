@@ -11,7 +11,7 @@
 using namespace algo::problems::leetcode::strings::equivalent_strings;
 using namespace algo::cpp::ds::tests::utils;
 
-class LongestEquivalentStringTests : public ::testing::Test {
+class FindWordsByCharTests : public ::testing::Test {
 protected:
     void SetUp() override {}
 
@@ -26,20 +26,20 @@ public:
 };
 
 
-TEST_F(LongestEquivalentStringTests, LeetCodeSample1) {
+TEST_F(FindWordsByCharTests, LeetCodeSample1) {
     run_test({"ab", "c"}, {"a", "bc"}, true);
 }
 
-TEST_F(LongestEquivalentStringTests, LeetCodeSample2) {
+TEST_F(FindWordsByCharTests, LeetCodeSample2) {
     run_test({"a", "cb"}, {"ab", "c"}, false);
 }
 
-TEST_F(LongestEquivalentStringTests, LeetCodeSample3) {
+TEST_F(FindWordsByCharTests, LeetCodeSample3) {
     run_test({"abc", "d", "defg"}, {"abcddefg"}, true);
 }
 
 
-TEST_F(LongestEquivalentStringTests, RunTestsFromResource) {
+TEST_F(FindWordsByCharTests, RunTestsFromResource) {
     using namespace algo::cpp::ds::tests::utils::leetcode;
     auto path = get_test_ds_dir("strings");
     auto usecase_dir = path / "equivalent_strings_1662";
