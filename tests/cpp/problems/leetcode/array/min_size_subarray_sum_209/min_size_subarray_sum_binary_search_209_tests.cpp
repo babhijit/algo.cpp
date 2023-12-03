@@ -20,10 +20,20 @@ protected:
     void TearDown() override {}
 
 protected:
-    void run_test(std::vector<int> nums, int target, int expected) {
+    static void run_test(std::vector<int> nums, int target, int expected) {
         MinSizeSubarraySum solution(new MinSizeSubarraySum_BinarySearch());
         auto result = solution.minSubArrayLen(target, nums);
         ASSERT_EQ(expected, result);
+    }
+
+    static void run_test_case(const std::filesystem::path &testcase) {
+        TestCase tc(testcase);
+
+        auto input = tc.getInput();
+        auto target = tc.getTarget();
+        auto expected = tc.getExpected();
+
+        run_test(std::move(input), target, expected);
     }
 
 };
@@ -46,13 +56,9 @@ TEST_F(MinSizeSubarraySumBinarySearchTests, RunTestsFromResource) {
     auto path = get_test_ds_dir("array");
     auto usecase_dir = path / "min_size_subarray_sum_209";
 
-    for (const auto &testcase: std::filesystem::directory_iterator(usecase_dir)) {
-        TestCase tc(testcase);
-
-        auto input = tc.getInput();
-        auto target = tc.getTarget();
-        auto expected = tc.getExpected();
-
-        run_test(std::move(input), target, expected);
-    }
+    std::for_each(std::filesystem::directory_iterator(usecase_dir),
+                  std::filesystem::directory_iterator(),
+                  [](const auto &testcase) {
+                      run_test_case(testcase);
+                  });
 }

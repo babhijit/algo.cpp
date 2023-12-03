@@ -3,6 +3,7 @@
 #include <functional>
 #include <numeric>
 #include <limits>
+#include <algorithm>
 
 
 namespace algo::problems::leetcode::array::min_size_subarray_sum {
