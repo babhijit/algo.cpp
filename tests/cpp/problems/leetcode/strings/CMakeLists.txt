@@ -1,3 +1,4 @@
 add_subdirectory(longest_uniq_substr_3)
 add_subdirectory(equivalent_strings_1662)
 add_subdirectory(find_words_by_char_1160)
+add_subdirectory(largest_3_same_num_2264)
