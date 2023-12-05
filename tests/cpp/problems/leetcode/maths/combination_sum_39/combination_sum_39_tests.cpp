@@ -5,11 +5,6 @@
 
 #include <combination_sum.h>
 
-#include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
-#include "loader/base_loader.hpp"
-
-
 using namespace algo::problems::leetcode::maths::combination_sum;
 
 class CombinationSumTests : public ::testing::Test {
