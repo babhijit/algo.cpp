@@ -4,7 +4,7 @@
 #include "min_time_visiting_all_points.hpp"
 
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 
 #include <gtest/gtest.h>
 

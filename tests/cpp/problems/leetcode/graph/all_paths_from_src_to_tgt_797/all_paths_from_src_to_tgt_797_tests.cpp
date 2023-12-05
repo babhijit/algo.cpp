@@ -5,7 +5,7 @@
 #include <all_paths_from_src_to_tgt.hpp>
 
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 #include "loader/base_loader.hpp"
 
 #include "test_case.hpp"

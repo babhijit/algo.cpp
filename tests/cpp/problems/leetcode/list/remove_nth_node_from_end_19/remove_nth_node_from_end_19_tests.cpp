@@ -6,7 +6,7 @@
 #include "remove_nth_node_from_list_end.hpp"
 
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 #include "loader/base_loader.hpp"
 
 #include "test_case.hpp"

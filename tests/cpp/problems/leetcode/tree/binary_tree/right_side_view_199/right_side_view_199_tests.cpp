@@ -8,7 +8,7 @@
 
 #include "loader/base_loader.hpp"
 #include "loader/bst/load_bst.hpp"
-#include "../../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 
 using namespace algo::cpp::problems::bt::right_side_view_199;
 

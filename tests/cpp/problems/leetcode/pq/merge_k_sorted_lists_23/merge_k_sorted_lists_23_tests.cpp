@@ -5,7 +5,7 @@
 #include "merge_k_sorted.hpp"
 
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 
 #include "test_case.hpp"
 

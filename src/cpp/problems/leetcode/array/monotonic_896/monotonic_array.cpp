@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "monotonic_array.hpp"
 
 namespace algo::problems::leetcode::array::monotonic {

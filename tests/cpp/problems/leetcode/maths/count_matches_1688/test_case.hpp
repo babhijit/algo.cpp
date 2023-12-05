@@ -1,5 +1,5 @@
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 #include "loader/base_loader.hpp"
 
 class TestCase {

@@ -1,7 +1,7 @@
 #include "test_case.hpp"
 
 #include "res/ds_resource_utils.hpp"
-#include "../../utils/include/file_utils.hpp"
+#include "lc_file_utils.hpp"
 
 #include "equivalent_strings.hpp"
 
