@@ -1,5 +1,4 @@
-#ifndef ALGO_CPP_TEST_CASE_HPP
-#define ALGO_CPP_TEST_CASE_HPP
+#pragma once
 
 
 #include <string>
@@ -39,6 +38,3 @@ private:
         return result;
     }
 };
-
-
-#endif //ALGO_CPP_TEST_CASE_HPP

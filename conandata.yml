@@ -2,5 +2,4 @@
 # To keep your changes, remove these comment lines, but the plugin won't be able to modify your requirements
 
 requirements:
-  - "fmt/10.1.1"
   - "boost/1.83.0"
