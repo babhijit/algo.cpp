@@ -10,22 +10,24 @@
 #include <string>
 #include <vector>
 
+using IntMatrix = std::vector<std::vector<int>>;
+
 class TestCase {
 private:
-    std::vector<int> input;
-    int expected;
+    IntMatrix input;
+    IntMatrix expected;
 public:
     explicit TestCase(const std::filesystem::path &file_name) {
         auto json = getJson(file_name);
-        input = loadVector(json.at("input").as_array());
-        expected = json.at("expected").get_int64();
+        input = loadMatrix(json.at("input").as_array());
+        expected = loadMatrix(json.at("expected").as_array());
     }
 
-    [[nodiscard]] int getExpected() const {
+    [[nodiscard]] IntMatrix& getExpected() {
         return expected;
     }
 
-    [[nodiscard]] std::vector<int> getInput() {
+    [[nodiscard]] IntMatrix& getInput() {
         return input;
     }
 
@@ -36,10 +38,19 @@ private:
         return boost::json::parse(json_str);
     }
 
-    static std::vector<int> loadVector(boost::json::array json_array) {
+    static std::vector<int> load_vector(boost::json::array json_array) {
         std::vector<int> result;
         for (auto &element: json_array) {
             result.emplace_back(element.get_int64());
+        }
+
+        return result;
+    }
+
+    static IntMatrix loadMatrix(boost::json::array json_array) {
+        IntMatrix result;
+        for (auto &element: json_array) {
+            result.emplace_back(load_vector(element.as_array()));
         }
 
         return result;

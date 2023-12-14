@@ -48,7 +48,7 @@ public:
 
 
 private:
-    static std::vector<int> load_vector(boost::json::array json_array) {
+    static std::vector<int> loadVector(boost::json::array json_array) {
         std::vector<int> result;
         for(auto &element: json_array) {
             result.push_back(element.get_int64());
@@ -58,7 +58,7 @@ private:
     }
 
     static ListNode* load_list(boost::json::array json_array) {
-        auto values = load_vector(std::move(json_array));
+        auto values = loadVector(std::move(json_array));
         return load_list(std::move(values));
     }
 };

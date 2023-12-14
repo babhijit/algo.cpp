@@ -33,7 +33,7 @@ public:
 
 
 private:
-    std::vector<int> load_vector(boost::json::array json_array) {
+    std::vector<int> loadVector(boost::json::array json_array) {
 
         std::vector<int> result;
         for(auto &element: json_array) {
@@ -46,7 +46,7 @@ private:
     Matrix load_matrix(boost::json::array json_matrix) {
         Matrix result;
         for(auto &element: json_matrix) {
-            auto row = load_vector(element.as_array());
+            auto row = loadVector(element.as_array());
             result.push_back(row);
         }
 

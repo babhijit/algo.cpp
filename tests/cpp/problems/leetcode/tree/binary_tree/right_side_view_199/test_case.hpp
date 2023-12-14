@@ -34,7 +34,7 @@ public:
 
         auto bst_input = json.at("input").as_string().c_str();
         input = load_bst(bst_input);
-        expected = load_vector(json.at("expected").as_array());
+        expected = loadVector(json.at("expected").as_array());
     }
 
     [[nodiscard]] std::vector<int> getExpected() const {
@@ -50,7 +50,7 @@ private:
         return bst_loader.load_bst(std::move(bst_input));
     }
 
-    static std::vector<int> load_vector(boost::json::array json_array) {
+    static std::vector<int> loadVector(boost::json::array json_array) {
 
         std::vector<int> result;
         for (auto &element: json_array) {

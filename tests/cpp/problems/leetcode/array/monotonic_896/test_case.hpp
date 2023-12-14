@@ -21,7 +21,7 @@ private:
 
 public:
     TestCase(boost::json::value&& json) {
-        input = load_vector(json.at("input").as_array());
+        input = loadVector(json.at("input").as_array());
         expected = json.at("result").as_bool();
     }
 
@@ -34,7 +34,7 @@ public:
     }
 
 private:
-    std::vector<int> load_vector(boost::json::array json_array) {
+    std::vector<int> loadVector(boost::json::array json_array) {
         std::vector<int> result;
         for(auto &element: json_array) {
             result.push_back(element.get_int64());

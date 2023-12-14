@@ -43,14 +43,14 @@ private:
     static Matrix<int> load_matrix(boost::json::array &array) {
         Matrix<int> result;
         for (auto &element: array) {
-            std::vector<int> row = load_vector(element.as_array());
+            std::vector<int> row = loadVector(element.as_array());
             result.emplace_back(std::move(row));
         }
 
         return result;
     }
 
-    static std::vector<int> load_vector(boost::json::array json_array) {
+    static std::vector<int> loadVector(boost::json::array json_array) {
         std::vector<int> result;
         for (auto &element: json_array) {
             result.emplace_back(element.get_int64());
