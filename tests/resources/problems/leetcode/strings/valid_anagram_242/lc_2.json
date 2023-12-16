@@ -1,0 +1,5 @@
+{
+  "s": "cat",
+  "t": "rat",
+  "expected": false
+}

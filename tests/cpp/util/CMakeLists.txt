@@ -1,5 +1,7 @@
 project(algo.cpp.tests.util)
 
+find_package(Boost COMPONENTS json REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
 
 set(RES_HEADERS
         include/res/stl_compare_utils.hpp
@@ -19,12 +21,15 @@ set(RES_SOURCES
         impl/res/test_resource_utils.cpp
         )
 
-set(LOADER_HEADERS include/loader/base_loader.hpp
+set(LOADER_HEADERS
+        include/loader/base_loader.hpp
+        include/loader/json_loader.hpp
         include/loader/bst/load_bst.hpp
         include/loader/arrays/load_int_array.hpp
         )
 
 set(LOADER_SOURCES impl/loader/base_loader.cpp
+        impl/loader/json_loader.cpp
         impl/loader/bst/load_bst.cpp
         impl/loader/arrays/load_int_array.cpp)
 
