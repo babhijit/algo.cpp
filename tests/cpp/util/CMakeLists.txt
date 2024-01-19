@@ -41,6 +41,7 @@ set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES} impl/loader/list/load_int
 
 include_directories(
         include
+        include/loader
         include/loader/bst
         include/loader/list
         include/loader/arrays
