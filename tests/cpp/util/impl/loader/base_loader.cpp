@@ -19,3 +19,7 @@ std::string BaseLoader::load_file(const std::filesystem::path &file_name) {
 
     return result;
 }
+
+std::string BaseLoader::operator()(const std::filesystem::path &file_name) {
+    return load_file(file_name);
+}

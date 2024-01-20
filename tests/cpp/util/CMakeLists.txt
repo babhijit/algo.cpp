@@ -24,6 +24,7 @@ set(RES_SOURCES
 set(LOADER_HEADERS
         include/loader/base_loader.hpp
         include/loader/json_loader.hpp
+        include/loader/test_case_loader.hpp
         include/loader/bst/load_bst.hpp
         include/loader/arrays/load_int_array.hpp
         )
@@ -31,6 +32,7 @@ set(LOADER_HEADERS
 set(LOADER_SOURCES impl/loader/base_loader.cpp
         impl/loader/json_loader.cpp
         impl/loader/bst/load_bst.cpp
+        impl/loader/test_case_loader.cpp
         impl/loader/arrays/load_int_array.cpp)
 
 set(DS_HEADERS include/ds/tree_node.hpp)
