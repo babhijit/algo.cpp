@@ -55,4 +55,4 @@
  <li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Array</li><li>Matrix</li><li>Simulation</li></div></div><br><div><li>👍 971</li><li>👎 64</li></div>
+<div><div>Related Topics</div><div><li>Array</li><li>Vector2D</li><li>Simulation</li></div></div><br><div><li>👍 971</li><li>👎 64</li></div>

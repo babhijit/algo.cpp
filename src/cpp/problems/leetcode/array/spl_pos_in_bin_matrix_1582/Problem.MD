@@ -29,4 +29,4 @@
  <li><code>mat[i][j]</code> is either <code>0</code> or <code>1</code>.</li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Array</li><li>Matrix</li></div></div><br><div><li>👍 1184</li><li>👎 50</li></div>
+<div><div>Related Topics</div><div><li>Array</li><li>Vector2D</li></div></div><br><div><li>👍 1184</li><li>👎 50</li></div>
