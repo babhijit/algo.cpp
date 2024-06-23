@@ -1,0 +1,8 @@
+{
+  "m": 36,
+  "n": 5,
+  "maxMove": 50,
+  "startRow": 15,
+  "startColumn": 3,
+  "expected": 390153306
+}

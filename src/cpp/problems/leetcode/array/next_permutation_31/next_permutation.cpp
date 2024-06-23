@@ -1,8 +1,7 @@
 #include "next_permutation.hpp"
 
 #include <algorithm>
-#include <iterator>
-#include <stdexcept>
+
 
 namespace algo::problems::leetcode::array::next_permutation {
 

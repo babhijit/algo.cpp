@@ -30,4 +30,4 @@
  <li><code>-10<sup>9</sup> &lt;= matrix[i][j] &lt;= 10<sup>9</sup></code></li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Array</li><li>Matrix</li><li>Simulation</li></div></div><br><div><li>👍 3240</li><li>👎 431</li></div>
+<div><div>Related Topics</div><div><li>Array</li><li>Vector2D</li><li>Simulation</li></div></div><br><div><li>👍 3240</li><li>👎 431</li></div>
