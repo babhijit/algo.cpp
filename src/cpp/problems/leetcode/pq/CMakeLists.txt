@@ -1,2 +1,3 @@
 add_subdirectory(k_largest_215)
 add_subdirectory(merge_k_sorted_lists_23)
+add_subdirectory(longest_cont_subarr_absdiff_le_limit_1438)
