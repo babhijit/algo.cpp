@@ -8,6 +8,8 @@
 
 namespace algo::cpp::leetcode::ds {
 
+    bool isNullNode(TreeNode* node) { return node == nullptr; }
+
     std::string TreeNode::to_string(TreeNode *root) {
         std::queue<TreeNode *> q;
         add_to_queue(root, q);
@@ -16,7 +18,7 @@ namespace algo::cpp::leetcode::ds {
     }
 
     void TreeNode::add_to_queue(TreeNode *node, std::queue<TreeNode *> &q) {
-        if (!node) {
+        if (not node) {
             return;
         }
 
@@ -59,5 +61,40 @@ namespace algo::cpp::leetcode::ds {
         oss << "]";
 
         return oss.str();
-   }
+    }
+
+    bool TreeNode::operator==(TreeNode *other) const {
+        if (not other) {
+            return false;
+        }
+
+        if (val != other->val) {
+            return false;
+        }
+
+        // left subtree check
+        if(left) {
+            if (left != other->left) {
+                return false;
+            }
+        } else {
+            return other->left == nullptr;
+        }
+
+        // right subtree check
+        if (right) {
+            if (right != other->right) {
+                return false;
+            }
+        } else {
+            return other->right == nullptr;
+        }
+
+        return true;
+    }
+
+    bool TreeNode::operator!=(TreeNode *other) const {
+        bool isEqual = (this == other);
+        return not isEqual;
+    }
 }

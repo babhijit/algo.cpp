@@ -14,7 +14,7 @@ namespace algo::cpp::leetcode::ds {
         TreeNode(int val, TreeNode *left, TreeNode *right) :
                 val(val), left(left), right(right) {}
 
-        TreeNode(int val) : TreeNode(val, nullptr, nullptr) {}
+        explicit TreeNode(int val) : TreeNode(val, nullptr, nullptr) {}
 
         TreeNode() : TreeNode(0) {}
 
@@ -25,6 +25,9 @@ namespace algo::cpp::leetcode::ds {
         static void add_to_queue(TreeNode *node, std::queue<TreeNode *> &q);
 
         static void add_to_queue_preorder(TreeNode *node, std::queue<TreeNode *> &q);
+
+        bool operator== (TreeNode* other) const;
+        bool operator!= (TreeNode* other) const;
 
     private:
         static std::string to_string_from_queue(std::queue<TreeNode *> &q);
