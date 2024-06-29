@@ -1,0 +1,5 @@
+{
+  "haystack":  "BCBAABACAABABACAA",
+  "needle":  "ABABAC",
+  "expected": 9
+}

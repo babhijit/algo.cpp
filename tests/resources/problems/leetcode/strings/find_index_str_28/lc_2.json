@@ -1,0 +1,5 @@
+{
+  "haystack":  "leetcode",
+  "needle":  "leeto",
+  "expected": -1
+}
