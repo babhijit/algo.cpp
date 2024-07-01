@@ -63,38 +63,33 @@ namespace algo::cpp::leetcode::ds {
         return oss.str();
     }
 
-    bool TreeNode::operator==(TreeNode *other) const {
-        if (not other) {
+    bool equals(TreeNode *a, TreeNode *b) {
+        if (not a or not b) {
             return false;
         }
 
-        if (val != other->val) {
+        if (a->val != b->val) {
             return false;
         }
 
         // left subtree check
-        if(left) {
-            if (left != other->left) {
+        if(a->left) {
+            if (not equals(a->left, b->left)) {
                 return false;
             }
         } else {
-            return other->left == nullptr;
+            return b->left == nullptr;
         }
 
         // right subtree check
-        if (right) {
-            if (right != other->right) {
+        if (a->right) {
+            if (not equals(a->right, b->right)) {
                 return false;
             }
         } else {
-            return other->right == nullptr;
+            return b->right == nullptr;
         }
 
         return true;
-    }
-
-    bool TreeNode::operator!=(TreeNode *other) const {
-        bool isEqual = (this == other);
-        return not isEqual;
     }
 }

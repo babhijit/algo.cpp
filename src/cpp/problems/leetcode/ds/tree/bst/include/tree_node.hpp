@@ -26,13 +26,14 @@ namespace algo::cpp::leetcode::ds {
 
         static void add_to_queue_preorder(TreeNode *node, std::queue<TreeNode *> &q);
 
-        bool operator== (TreeNode* other) const;
-        bool operator!= (TreeNode* other) const;
+        friend bool equals(TreeNode* a, TreeNode* b);
 
     private:
         static std::string to_string_from_queue(std::queue<TreeNode *> &q);
 
     };
+
+    bool equals(TreeNode *a, TreeNode *b);
 
 }
 

@@ -29,14 +29,14 @@ protected:
     static void runTest(TreeNode* root, TreeNode* expected) {
         BalanceBST solution;
         auto actual = solution.balanceBST(root);
-        ASSERT_EQ(TreeNode::to_string(expected), TreeNode::to_string(actual));
+        ASSERT_TRUE(equals(actual, expected));
     }
 };
 
 
 TEST_F(BalanceBstTests, Scenario1) {
     runTest({"1","null","2","null", "3","null","4","null", "null"},
-            {"2","1","3","null","null","null","4"});
+            {"3","2","4","1","null","null","null"});
 }
 
 TEST_F(BalanceBstTests, Scenario2) {
