@@ -6,28 +6,23 @@
 namespace algo::problems::leetcode::interview::dp::jump_game {
 
     bool JumpGame::canJump(std::vector<int> &nums) {
-        auto memo = std::vector<Index>(nums.size(), Index::UNKNOWN);
-        memo[nums.size() - 1] = Index::GOOD;
+        auto memo = std::vector<bool>(nums.size(), false);
+        const int lastIndex = static_cast<int>(nums.size()) - 1;
+        memo[lastIndex] = true;
 
-        return canJumpFrom(0, nums, memo);
-    }
-
-    bool JumpGame::canJumpFrom(const int pos, std::vector<int> &nums, std::vector<Index> &memo) {
-        if (memo[pos] != Index::UNKNOWN) {
-            return memo[pos] == Index::GOOD ? true : false;
-        }
-
-        auto maxAllowedJump = pos + nums[pos];
-        auto furthestJump = std::min(maxAllowedJump, static_cast<int>(nums.size()) - 1);
-        for(auto nextPos = pos + 1; nextPos <= furthestJump; ++nextPos) {
-            if (canJumpFrom(nextPos, nums, memo)) {
-                memo[nextPos] = Index::GOOD;
-                return true;
+        // start from the second last element; last element is always good and is also the destination
+        for (int i = lastIndex - 1; i >= 0; --i) {
+            auto maxAllowedJump = i + nums[i];
+            auto furthestJump = std::min(maxAllowedJump, lastIndex);
+            for (int j = i + 1; j <= furthestJump; ++j) {
+                if (memo[j]) {
+                    memo[i] = true;
+                    break;
+                }
             }
         }
 
-        memo[pos] = Index::BAD;
-        return false;
+        return memo[0];
     }
 }
 
