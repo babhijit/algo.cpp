@@ -4,48 +4,32 @@
 #include <set>
 #include <stdexcept>
 
+/**
+ * Time Complexity: O( N^2 Log(N) )
+ * Space Complexity: O(1)
+ */
+
 namespace algo::interview::medium::array::three_sum {
 
     std::vector<std::vector<int>> ThreeSum::threeSum(std::vector<int> &nums) {
-        std::set<std::vector<int>> results;
-
         if (nums.size() < 3) {
             throw std::logic_error("nums must contain at least 3 elements");
         }
 
         std::sort(nums.begin(), nums.end());
-        auto i_last = std::prev(std::end(nums), 2);
-        auto j_last = std::prev(std::end(nums));
-        for (auto i_itr = std::begin(nums); i_itr != i_last; ++i_itr) {
-            std::vector<int>::iterator  itr;
-            auto j_itr = std::next(i_itr);
-            while (j_itr != j_last) {
-                auto twoSum = *i_itr + *j_itr;
-                if (std::binary_search(std::next(j_itr), std::end(nums), -twoSum)) {
-                    results.emplace(std::vector({*i_itr, *j_itr, -twoSum}));
-                }
 
-                // we have already taken duplicates in three sum, now we need to skip them
-                itr = std::lower_bound(std::next(j_itr), j_last, *j_itr);
-                if (*itr == *j_itr) {
-                    j_itr = itr;
+        std::vector<std::vector<int>> results;
+        auto iEnd = std::prev(std::end(nums), 2);
+        auto jEnd = std::prev(std::end(nums));
+        for (auto iItr = std::begin(nums); iItr != iEnd; iItr = std::upper_bound(std::next(iItr), iEnd, *iItr)) {
+            for (auto jItr = std::next(iItr); jItr != jEnd; jItr = std::upper_bound(std::next(jItr), jEnd, *jItr)) {
+                auto twoSum = *iItr + *jItr;
+                if (std::binary_search(std::next(jItr), std::end(nums), -twoSum)) {
+                    results.push_back({*iItr, *jItr, -twoSum});
                 }
-
-                if (j_itr != j_last) {
-                    ++j_itr;
-                }
-            }
-
-            // skip through the duplicates
-            itr = std::lower_bound(std::next(i_itr), i_last, *i_itr);
-            if ((itr != i_last) and (*itr == *i_itr)) {
-                i_itr = itr;
             }
         }
 
-        if (results.empty()) {
-            return {{}};
-        }
-        return {std::begin(results), std::end(results)};
+        return results;
     }
 }

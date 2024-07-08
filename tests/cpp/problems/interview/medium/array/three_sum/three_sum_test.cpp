@@ -41,7 +41,7 @@ TEST_F(ThreeSumTests, LeetCodeSample1) {
 }
 
 TEST_F(ThreeSumTests, LeetCodeSample2) {
-    run_test({0, 1, 1}, {{}});
+    run_test({0, 1, 1}, {});
 }
 
 TEST_F(ThreeSumTests, LeetCodeSample3) {
