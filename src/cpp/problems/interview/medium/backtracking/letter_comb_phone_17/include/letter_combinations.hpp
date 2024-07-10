@@ -10,7 +10,7 @@ namespace algo::problems::leetcode::interview::backtracing::letter_combinations 
         std::vector<std::string> letterCombinations(std::string const &digits);
 
     private:
-        void letterCombinations(std::string const& s,
+        void letterCombinations(std::string& s,
                                 std::string const &digits,
                                 std::size_t index,
                                 std::vector<std::string> &combinations);
