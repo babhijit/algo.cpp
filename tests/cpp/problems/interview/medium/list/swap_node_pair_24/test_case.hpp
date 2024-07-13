@@ -1,6 +1,4 @@
-#ifndef ALGO_CPP_TEST_CASE_HPP
-#define ALGO_CPP_TEST_CASE_HPP
-
+#pragma once
 
 #include <string>
 #include <utility>
@@ -22,17 +20,12 @@ private:
     ListNode* expected;
 
 public:
-    explicit TestCase(const std::filesystem::directory_entry& testcase) {
+    explicit TestCase(std::filesystem::directory_entry const& testcase) {
         BaseLoader loader;
         auto json_str = loader.load_file(testcase);
         auto json = boost::json::parse(json_str);
         input = load_list(json.at("input").as_array());
-        n = json.at("n").as_int64();
         expected = load_list(json.at("expected").as_array());
-    }
-
-    [[nodiscard]] int getN() const {
-        return n;
     }
 
     [[nodiscard]] ListNode* getExpected() const {
@@ -54,7 +47,7 @@ private:
     static std::vector<int> loadVector(boost::json::array json_array) {
         std::vector<int> result;
         for(auto &element: json_array) {
-            result.push_back(element.get_int64());
+            result.push_back(static_cast<int>(element.get_int64()));
         }
 
         return result;
@@ -65,6 +58,3 @@ private:
         return load_list(std::move(values));
     }
 };
-
-
-#endif //ALGO_CPP_TEST_CASE_HPP

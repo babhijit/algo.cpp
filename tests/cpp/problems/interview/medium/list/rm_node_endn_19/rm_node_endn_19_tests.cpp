@@ -65,13 +65,11 @@ TEST_F(RmNthNodeFromListEndTests, RunTestsFromResource) {
     BaseLoader loader;
     RemoveNthNodeFromEnd solution;
     for (const auto& testcase: std::filesystem::directory_iterator(usecase_dir)) {
-        auto json_str = loader.load_file(testcase);
-        TestCase tc(boost::json::parse(json_str));
+        TestCase tc(testcase);
 
         auto input = tc.getInput();
         auto n = tc.getN();
-        auto actual = solution.removeNthFromEnd(input, n);
         auto expected = tc.getExpected();
-        ASSERT_EQ(ListNode::to_string(expected), ListNode::to_string(actual));
+        runTest(input, n, expected);
     }
 }
