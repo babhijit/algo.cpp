@@ -1,45 +1,40 @@
 #include "swap_node_pair.hpp"
 
-#include <stack>
+#include <memory>
 #include <utility>
 
 /**
  * Time Complexity: O(N)
- * Space Complexity: O(N)
+ * Space Complexity: O(1)
  */
 
 namespace algo::interview::medium::ll::swap_node_pairs {
 
     using NodePair = std::pair<ListNode *, ListNode *>;
 
-    ListNode *swapNodePairs(ListNode *first, ListNode *second, ListNode *tail) {
-        if (second) {
-            second->next = first;
+    ListNode *swapNodePairs(ListNode *first, ListNode *second) {
+        if (not second) {
+            return first;
         }
-        first->next = tail;
-
-        return second ? second : first;
+        auto t = second->next;
+        second->next = first;
+        first->next = t;
+        return second;
     }
 
     ListNode *SwapNodePairs::swapPairs(ListNode *head) {
-        std::stack<NodePair> nodePairs;
-        auto it = head;
-        while (it) {
-            nodePairs.emplace(it, it->next);
-            it = it->next;
-            if (it) {
-                it = it->next;
-            }
+        auto dummyPtr = std::make_unique<ListNode>(-1);
+        dummyPtr->next = head;
+
+        auto parent = dummyPtr.get();
+        while (parent->next) {
+            auto first = parent->next;
+            auto second = first->next;
+
+            parent->next = swapNodePairs(first, second);
+            parent = first; // now first is following the second
         }
 
-        ListNode *newHead = {};
-        while (not nodePairs.empty()) {
-            auto nodePair = nodePairs.top();
-            nodePairs.pop();
-
-            newHead = swapNodePairs(nodePair.first, nodePair.second, newHead);
-        }
-
-        return newHead;
+        return dummyPtr->next;
     }
 }
