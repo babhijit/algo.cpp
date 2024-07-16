@@ -27,13 +27,16 @@ set(LOADER_HEADERS
         include/loader/test_case_loader.hpp
         include/loader/bst/load_bst.hpp
         include/loader/arrays/load_int_array.hpp
+        include/loader/arrays/load_int_matrix.hpp
         )
 
 set(LOADER_SOURCES impl/loader/base_loader.cpp
         impl/loader/json_loader.cpp
         impl/loader/bst/load_bst.cpp
         impl/loader/test_case_loader.cpp
-        impl/loader/arrays/load_int_array.cpp)
+        impl/loader/arrays/load_int_array.cpp
+        impl/loader/arrays/load_int_matrix.cpp
+)
 
 set(DS_HEADERS include/ds/tree_node.hpp)
 
