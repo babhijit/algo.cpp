@@ -1,9 +1,4 @@
-//
-// Created by abhijit on 17/1/23.
-//
-
-#ifndef ALGO_CPP_LOAD_ARRAY_HPP
-#define ALGO_CPP_LOAD_ARRAY_HPP
+#pragma once
 
 #include <filesystem>
 #include <string>
@@ -18,5 +13,3 @@ namespace algo::cpp::ds::tests::utils {
         std::vector<int> operator()(boost::json::array& json_array);
     };
 }
-
-#endif //ALGO_CPP_LOAD_ARRAY_HPP
