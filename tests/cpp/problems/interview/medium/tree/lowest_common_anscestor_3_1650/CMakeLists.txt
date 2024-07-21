@@ -1,4 +1,4 @@
-project(lgo.cpp.tests.cpp.problems.interview.medium.tree.lowest_common_anscestor_1650)
+project(algo.cpp.tests.cpp.problems.interview.medium.tree.lowest_common_anscestor_1650)
 
 set(PROJECT_BINARY lowest_common_anscestor_1650_tests)
 

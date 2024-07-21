@@ -7,7 +7,7 @@
 using namespace algo::interview::medium::tree::lowest_common_ancestor_3;
 
 
-class LowestCommonAncestorTests : public ::testing::Test {
+class LowestCommonAncestor3Tests : public ::testing::Test {
 protected:
     void SetUp() override {
     }
@@ -20,7 +20,7 @@ protected:
     }
 };
 
-TEST_F(LowestCommonAncestorTests, LeetCodeSample1) {
+TEST_F(LowestCommonAncestor3Tests, LeetCodeSample1) {
     Node* node3 = new Node(3);
     Node* node5 = new Node(5, nullptr, nullptr, node3);
     Node* node1 = new Node(1, nullptr, nullptr, node3);
@@ -40,7 +40,7 @@ TEST_F(LowestCommonAncestorTests, LeetCodeSample1) {
     runTest(node5, node4, node5);
 }
 
-TEST_F(LowestCommonAncestorTests, LeetCodeSample2) {
+TEST_F(LowestCommonAncestor3Tests, LeetCodeSample2) {
     Node* node3 = new Node(3);
     Node* node5 = new Node(5, nullptr, nullptr, node3);
     Node* node1 = new Node(1, nullptr, nullptr, node3);
@@ -60,7 +60,7 @@ TEST_F(LowestCommonAncestorTests, LeetCodeSample2) {
     runTest(node5, node1, node3);
 }
 
-TEST_F(LowestCommonAncestorTests, LeetCodeSample3) {
+TEST_F(LowestCommonAncestor3Tests, LeetCodeSample3) {
     Node* node1 = new Node(1);
     Node* node2 = new Node(5, nullptr, nullptr, node1);
     node1->left = node2;

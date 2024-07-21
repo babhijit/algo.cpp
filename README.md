@@ -10,8 +10,8 @@ Graph
 -----
 
 * [Undirected Graph](src/cpp/ds/include/graph/graph.hpp)
-* [Depth First Search](src/cpp/ds/include/graph/depth_first_search.hpp)
-* [Depth First Paths](src/cpp/ds/include/graph/depth_first_paths.hpp)
+* [TreeDepth First Search](src/cpp/ds/include/graph/depth_first_search.hpp)
+* [TreeDepth First Paths](src/cpp/ds/include/graph/depth_first_paths.hpp)
 * [ConnectedComponents](src/cpp/ds/include/graph/cc.hpp)
 * [Bipartite](src/cpp/ds/include/graph/two_color.hpp)
 

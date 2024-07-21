@@ -39,4 +39,4 @@
 <strong>Follow up:</strong> Can you flatten the tree in-place (with 
 <code>O(1)</code> extra space)?
 
-<div><div>Related Topics</div><div><li>Linked List</li><li>Stack</li><li>Tree</li><li>Depth-First Search</li><li>Binary Tree</li></div></div><br><div><li>👍 9973</li><li>👎 501</li></div>
+<div><div>Related Topics</div><div><li>Linked List</li><li>Stack</li><li>Tree</li><li>TreeDepth-First Search</li><li>Binary Tree</li></div></div><br><div><li>👍 9973</li><li>👎 501</li></div>

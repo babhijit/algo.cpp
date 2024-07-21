@@ -36,4 +36,4 @@ Note the bottom corner is not colored 2, because it is not 4-directionally conne
  <li><code>0 &lt;= sc &lt; n</code></li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Array</li><li>Depth-First Search</li><li>Breadth-First Search</li><li>Vector2D</li></div></div><br><div><li>👍 4894</li><li>👎 478</li></div>
+<div><div>Related Topics</div><div><li>Array</li><li>TreeDepth-First Search</li><li>Breadth-First Search</li><li>Vector2D</li></div></div><br><div><li>👍 4894</li><li>👎 478</li></div>

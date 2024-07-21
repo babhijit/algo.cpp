@@ -38,4 +38,4 @@
  <li>There is exactly one island in <code>grid</code>.</li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Array</li><li>Depth-First Search</li><li>Breadth-First Search</li><li>Vector2D</li></div></div><br><div><li>👍 4709</li><li>👎 253</li></div>
+<div><div>Related Topics</div><div><li>Array</li><li>TreeDepth-First Search</li><li>Breadth-First Search</li><li>Vector2D</li></div></div><br><div><li>👍 4709</li><li>👎 253</li></div>

@@ -26,4 +26,4 @@
  <li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Divide and Conquer</li><li>Greedy</li><li>Tree</li><li>Depth-First Search</li><li>Binary Search Tree</li><li>Binary Tree</li></div></div><br><div><li>👍 3604</li><li>👎 89</li></div>
+<div><div>Related Topics</div><div><li>Divide and Conquer</li><li>Greedy</li><li>Tree</li><li>TreeDepth-First Search</li><li>Binary Search Tree</li><li>Binary Tree</li></div></div><br><div><li>👍 3604</li><li>👎 89</li></div>

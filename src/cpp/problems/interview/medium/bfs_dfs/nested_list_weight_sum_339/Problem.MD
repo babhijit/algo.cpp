@@ -36,4 +36,4 @@
  <li>The maximum <strong>depth</strong> of any integer is less than or equal to <code>50</code>.</li> 
 </ul>
 
-<div><div>Related Topics</div><div><li>Depth-First Search</li><li>Breadth-First Search</li></div></div><br><div><li>👍 1725</li><li>👎 423</li></div>
+<div><div>Related Topics</div><div><li>TreeDepth-First Search</li><li>Breadth-First Search</li></div></div><br><div><li>👍 1725</li><li>👎 423</li></div>
