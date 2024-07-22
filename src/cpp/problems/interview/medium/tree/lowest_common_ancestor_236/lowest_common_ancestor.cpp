@@ -1,7 +1,7 @@
 #include "lowest_common_ancestor.hpp"
 
 #include <deque>
-#include <set>
+#include <unordered_set>
 #include <vector>
 #include <unordered_map>
 
@@ -29,7 +29,7 @@ namespace algo::interview::medium::tree::lowest_common_ancestor {
             }
         }
 
-        std::set<TreeNode*> ancestors;
+        std::unordered_set<TreeNode*> ancestors;
         while (p) {
             ancestors.insert(p);
             p = parent[p];
