@@ -1,7 +1,5 @@
 #include "find_peak_element.hpp"
 
-#include <stdexcept>
-
 namespace algo::interview::medium::array::find_peak_element {
 
     int FindPeakElement::findPeakElement(std::vector<int> &nums) {
