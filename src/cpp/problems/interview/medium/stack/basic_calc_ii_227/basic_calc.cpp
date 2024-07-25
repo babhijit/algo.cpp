@@ -2,7 +2,6 @@
 
 #include <deque>
 #include <numeric>
-#include <stdexcept>
 #include <unordered_map>
 
 namespace algo::problems::leetcode::interview::stack::basic_calc2 {
