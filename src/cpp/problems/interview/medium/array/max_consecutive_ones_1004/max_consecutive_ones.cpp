@@ -8,47 +8,24 @@
 namespace algo::interview::medium::array::max_consecutive_ones {
 
     int MaxConsecutiveOnes::longestOnes(std::vector<int> &nums, int k) {
-        int flipsRemaining{k};
-        int left{0}, right{0}, sum{0};
-        int maxSum{0};
-
-        while (right < nums.size()) {
-            maxSum = std::max(maxSum, sum);
-
-            // got consecutive 1s ...
-            if (nums[right] == 1) {
-                ++sum;
-                ++right;
-                continue;
+        int left{0}, right{0};
+        for (right = 0; right < nums.size(); ++right) {
+            if (nums[right] == 0) {
+                --k;
             }
 
-            // have we got enough Ks to flip 0 to 1
-            if (flipsRemaining > 0) {
-                --flipsRemaining;
-                ++sum;
-                ++right;
-                continue;
-            }
-
-            // not enough Ks.. so slide our window
-            if (left < right) {
-                if (nums[left] == 1) {
-                    --sum;
-                } else {
-                    // check if we can get back some of the K
-                    if (flipsRemaining < k) {
-                        ++flipsRemaining;
-                        --sum;
-                    }
-                }
+            // this maintains the maximum window size we can achieve
+            // K can remain negative... this means that the current
+            // window size corresponds to the maximum window size but
+            // it's not all are consecutive 1s ... but during the iteration
+            // at some point (in the past) all were consecutive 1s
+            if (k < 0) {
+                k += 1 - nums[left];
                 ++left;
-            } else {
-                // we can't shrink the window any further... so move the right pointer
-                ++right;
             }
         }
 
-        return std::max(maxSum, sum);;
+        return right - left;
     }
 
 }
