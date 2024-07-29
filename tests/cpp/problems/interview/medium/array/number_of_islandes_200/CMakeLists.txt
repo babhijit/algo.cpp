@@ -1,12 +1,12 @@
-project(algo.cpp.tests.interview.medium.array.number_of_islands_200)
+project(algo.cpp.tests.interview.medium.array.k_closest_pts_to_origin_973)
 
-set(PROJECT_BINARY test_algo_medium_number_of_islands_200_tests)
+set(PROJECT_BINARY test_algo_medium_k_closest_pts_to_origin_973_tests)
 
 find_package(Boost REQUIRED COMPONENTS json)
 include_directories(${Boost_INCLUDE_DIR})
 
 add_executable(${PROJECT_BINARY}
-        number_of_islands_tests.cpp
+        k_closest_points_to_origin_test.cpp
 )
 
 target_link_libraries(
@@ -18,7 +18,7 @@ target_link_libraries(
         algo.cpp.tests.util
         algo.cpp.tests.leetcode.utils
         algo.cpp.tests.cpp.problems.interview.utils
-        algo.cpp.interview.medium.array.number_of_islands_200
+        algo.cpp.interview.medium.array.k_closest_pts_to_origin_973
 )
 
 gtest_discover_tests(${PROJECT_BINARY})

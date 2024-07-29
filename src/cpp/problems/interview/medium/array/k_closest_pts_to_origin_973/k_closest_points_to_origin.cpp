@@ -29,20 +29,20 @@ namespace algo::interview::medium::array::k_closest_pt_to_origin {
 
     Matrix KClosestPointsToOrigin::kClosest(Matrix &points, int k) {
         // create a max pq
-        std::priority_queue < Point, Matrix, PointComparator > pq;
+        std::priority_queue < Point, Matrix, PointComparator > maxPq;
         for (auto &pt: points) {
-            pq.push(pt);
-            if (pq.size() > k) {
+            maxPq.push(pt);
+            if (maxPq.size() > k) {
                 // pop the 'greater than' element
-                pq.pop();
+                maxPq.pop();
             }
         }
 
-        // push in reverse order
+        // push in reverse order as we want minPq output and not maxPq
         Matrix closestPoints(k, {0, 0});
-        while (not pq.empty()) {
-            closestPoints[--k] = pq.top();
-            pq.pop();
+        while (not maxPq.empty()) {
+            closestPoints[--k] = maxPq.top();
+            maxPq.pop();
         }
 
         return closestPoints;

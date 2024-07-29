@@ -1,21 +1,30 @@
 #pragma once
 
-#include <string>
-#include <vector>
+#include "loader/base_loader.hpp"
+#include "loader/arrays/load_t_matrix.hpp"
+
+#include "utils/dstypedefs.hpp"
 
 #include <boost/json.hpp>
 
-#include "loader/base_loader.hpp"
-#include "loader/arrays/load_int_array.hpp"
-#include "loader/arrays/load_int_matrix.hpp"
+#include <functional>
+#include <string>
+#include <vector>
 
-using Matrix = std::vector<std::vector<int>>;
+using namespace algo::cpp::ds::utils;
+
 
 class TestCase {
 private:
-    Matrix points_;
-    int k_;
-    Matrix expected_;
+    Matrix<char> grid_;
+    int expected_;
+
+    struct CharTransformer {
+        char operator()(boost::json::value& v) const {
+            std::string strValue = v.as_string().c_str();
+            return strValue[0];
+        }
+    };
 
 public:
     explicit TestCase(const std::filesystem::path &testcase) {
@@ -24,20 +33,15 @@ public:
         BaseLoader loader;
         auto json_str = loader.load_file(testcase);
         auto json = boost::json::parse(json_str);
-        points_ = LoadIntMatrix()(json.at("points").as_array());
-        k_ = static_cast<int>(json.at("k").as_int64());
-        expected_ = LoadIntMatrix()(json.at("expected").as_array());
+        grid_ = LoadTMatrix<char, CharTransformer>()(json.at("grid").as_array());
+        expected_ = static_cast<int>(json.at("expected").as_int64());
     }
 
-    [[nodiscard]] Matrix getExpected() const {
+    [[nodiscard]] int getExpected() const {
         return expected_;
     }
 
-    [[nodiscard]] Matrix getPoints() const {
-        return points_;
-    }
-
-    [[nodiscard]] int getK() const {
-        return k_;
+    [[nodiscard]] Matrix<char> getGrid() const {
+        return grid_;
     }
 };

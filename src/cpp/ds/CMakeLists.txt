@@ -50,7 +50,11 @@ set(DIGRAPH_SOURCES
         impl/digraph/depth_first_order.cpp)
 
 # Utility Functions
-set(UTIL_HEADERS include/utils/reverse_graph.hpp include/utils/graph_loader.hpp)
+set(UTIL_HEADERS
+        include/utils/reverse_graph.hpp
+        include/utils/graph_loader.hpp
+        include/utils/not_implemented.hpp
+)
 
 # Library Headers and Sources
 set(LIB_HEADERS ${SEQ_HEADERS} ${BST_HEADERS} ${GRAPH_HEADERS} ${DIGRAPH_HEADERS} ${UTIL_HEADERS})
