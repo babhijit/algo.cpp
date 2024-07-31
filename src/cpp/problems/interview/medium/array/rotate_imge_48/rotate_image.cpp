@@ -23,8 +23,6 @@ namespace algo::interview::medium::array::rotate_image {
 
 
     void RotateImage::rotate(Matrix<int> &matrix) {
-        Matrix<int> origin = matrix;
-
         int left = 0;
         int right = static_cast<int>(matrix[0].size()) - 1;
 
