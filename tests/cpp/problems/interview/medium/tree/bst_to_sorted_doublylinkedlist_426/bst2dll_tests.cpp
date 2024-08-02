@@ -24,11 +24,17 @@ std::string toString(TreeNode* dlist) {
     std::ostringstream oss;
     oss << "[";
 
-    while(dlist) {
-        oss << dlist->val;
-        if(dlist->right)
-            oss << ",";
-        dlist = dlist->right;
+    if (dlist) {
+        for (auto node = dlist; node != dlist->left; node = node->right) {
+            oss << node->val;
+            if(node->right)
+                oss << ",";
+        }
+    }
+
+    // print the last node
+    if (dlist) {
+        oss << dlist->left->val;
     }
 
     oss << "]";
@@ -68,6 +74,10 @@ TEST_F(Bst2DllTests, Scenario1) {
 
 TEST_F(Bst2DllTests, Scenario2) {
     runTestCase("2,1,3", {1, 2, 3});
+}
+
+TEST_F(Bst2DllTests, Scenario3) {
+    runTestCase("", {});
 }
 
 TEST_F(Bst2DllTests, RunTestsFromResource)

@@ -41,7 +41,14 @@ namespace algo::interview::medium::tree::bst2dll {
     }
 
     TreeNode *Bst2Dll::treeToDoublyList(TreeNode *root) {
+        if (not root) {
+            return nullptr;
+        }
+
         auto [leftEdge, rightEdge] = inorder(root);
+        // make it cyclic!!!
+        leftEdge->left = rightEdge;
+        rightEdge->right = leftEdge;
         return leftEdge;
     }
 }
