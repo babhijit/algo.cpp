@@ -1,5 +1,4 @@
-#ifndef ALGO_CPP_LIST_NODE_HPP
-#define ALGO_CPP_LIST_NODE_HPP
+#pragma once
 
 #include <string>
 
@@ -21,4 +20,3 @@ namespace algo::cpp::leetcode::ds {
 
 } // ds
 
-#endif //ALGO_CPP_LIST_NODE_HPP

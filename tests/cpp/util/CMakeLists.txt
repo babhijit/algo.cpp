@@ -44,7 +44,11 @@ set(DS_HEADERS include/ds/tree_node.hpp)
 
 set(TEST_UTIL_HEADERS ${RES_HEADERS} ${LOADER_HEADERS} ${DS_HEADERS})
 
-set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES} impl/loader/list/load_int_list.cpp include/loader/list/load_int_list.hpp)
+set(TEST_UTIL_SOURCES ${RES_SOURCES} ${LOADER_SOURCES}
+        include/loader/list/load_int_list.hpp
+        impl/loader/list/load_int_list.cpp
+        include/loader/list/load_int_dlist.hpp
+        impl/loader/list/load_int_dlist.cpp)
 
 include_directories(
         include
