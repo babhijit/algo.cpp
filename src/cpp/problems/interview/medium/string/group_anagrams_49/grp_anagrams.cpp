@@ -1,7 +1,7 @@
 #include "grp_anagrams.hpp"
 
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 /**
@@ -11,7 +11,16 @@
 
 namespace algo::interview::medium::string::group_anagrams {
 
-    using Token = std::map<char, int>;
+    using Token = std::unordered_map<char, int>;
+    struct TokenHash {
+        std::size_t operator()(Token const& token) const {
+            std::size_t hash{0};
+            for (const auto&[key, value]: token) {
+                hash ^= std::hash<char>{}(key) ^ std::hash<int>{}(value);
+            }
+            return hash;
+        }
+    };
 
     Token getToken(std::string const& str) {
         Token tokens;
@@ -23,7 +32,7 @@ namespace algo::interview::medium::string::group_anagrams {
     }
 
     Matrix<std::string> GroupAnagram::groupAnagrams(std::vector<std::string> &strings) {
-        std::map<Token, std::vector<std::string>> anagrams;
+        std::unordered_map<Token, std::vector<std::string>, TokenHash> anagrams;
         for (auto const& str: strings) {
             auto token = getToken(str);
             auto& words = anagrams[token];
