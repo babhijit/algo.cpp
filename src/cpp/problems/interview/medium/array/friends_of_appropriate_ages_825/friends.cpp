@@ -32,6 +32,7 @@ namespace algo::interview::medium::array::friends {
             for (auto [ageY, countY]: ageGroups) {
                 if (canMakeFriendRequests(ageX, ageY)) {
                     if (ageX == ageY) {
+                        // eliminate self request
                         requests += ((countX - 1) * countY);
                     } else {
                         requests += (countX * countY);
