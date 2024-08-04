@@ -5,8 +5,8 @@
 #include <vector>
 
 /**
- * Time Complexity: O(N*M)
- * Space Complexity: O(N*M)
+ * Time Complexity: O(N*K)   k=>max length of string
+ * Space Complexity: O(N*k)
  */
 
 namespace algo::interview::medium::string::group_anagrams {
