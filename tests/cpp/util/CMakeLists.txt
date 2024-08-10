@@ -30,6 +30,8 @@ set(LOADER_HEADERS
         include/loader/arrays/load_t_array.hpp
         include/loader/arrays/load_int_matrix.hpp
         include/loader/arrays/load_t_matrix.hpp
+        include/loader/arrays/load_str_array.hpp
+        include/loader/arrays/load_str_matrix.hpp
         )
 
 set(LOADER_SOURCES impl/loader/base_loader.cpp
