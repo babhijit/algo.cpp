@@ -1,11 +1,11 @@
 #include "subsets.hpp"
 
-#include <set>
+#include <algorithm>
 #include <vector>
 
 /**
- * Time Complexity: O (2^N)
- * Space Complexity: O(2^N)
+ * Time Complexity: O(N* 2^N)
+ * Space Complexity: O(N)
  */
 
 namespace algo::interview::medium::bt::subsets_ii {
@@ -13,39 +13,38 @@ namespace algo::interview::medium::bt::subsets_ii {
     class Impl {
     public:
         explicit Impl(std::vector<int> &nums_) : nums(nums_) {
-            for(std::size_t i = 0; i < nums.size(); ++i) {
-                bt({},  i);
-            }
+            std::vector<int> currentSubset;
+
+            bt(subsets, currentSubset, 0);
         }
 
         [[nodiscard]] Matrix<int> subsetsWithDup() const {
-            Matrix<int> result;
-
-            for (auto& subset: subsets) {
-                result.emplace_back(subset.begin(), subset.end());
-            }
-
-            return result;
+            return subsets;
         }
 
     private:
-        void bt(std::set<int> lastSubset, int index) {
-            if (index == nums.size()) {
-                subsets.insert(lastSubset);
-                return;
-            }
+        void bt(std::vector<std::vector<int>>& subsets, std::vector<int> currentSubset, int index) {
+            subsets.push_back(currentSubset);
 
-            bt(lastSubset, index + 1);
-            lastSubset.insert(nums[index]);
-            bt(lastSubset, index + 1);
+            for (int i = index; i < nums.size(); ++i) {
+                // if the current element is a duplicate then ignore
+                if ((i != index) and (nums[i] == nums[i - 1])) {
+                    continue;
+                }
+
+                currentSubset.push_back(nums[i]);
+                bt(subsets, currentSubset, i + 1);
+                currentSubset.pop_back();
+            }
         }
 
     private:
         std::vector<int> &nums;
-        std::set<std::set<int>> subsets;
+        std::vector<std::vector<int>> subsets;
     };
 
     Matrix<int> Subsets::subsetsWithDup(std::vector<int> &nums) {
+        std::sort(nums.begin(), nums.end());
         Impl impl(nums);
         return impl.subsetsWithDup();
     }

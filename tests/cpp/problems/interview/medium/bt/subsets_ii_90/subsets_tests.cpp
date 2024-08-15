@@ -13,15 +13,21 @@
 
 using namespace algo::interview::medium::bt::subsets_ii;
 
-std::set<std::set<int>> toSet(Matrix<int>& matrix) {
-    std::set<std::set<int>> result;
+std::vector<std::vector<int>> toSet(Matrix<int>& matrix) {
+    std::vector<std::vector<int>> result;
 
     for (auto& vec: matrix) {
-        std::set<int> row(vec.begin(), vec.end());
-        result.insert(row);
+        std::vector<int> row(vec.begin(), vec.end());
+        std::sort(row.begin(), row.end());
+        result.push_back(row);
     }
 
-    return result;
+    std::sort(result.begin(), result.end());
+    std::set<std::vector<int>> uniqueSubsets;
+    for (auto& subset: result) {
+        uniqueSubsets.insert(subset);
+    }
+    return {uniqueSubsets.begin(), uniqueSubsets.end()};
 }
 
 class SubsetsIITests : public ::testing::Test {
