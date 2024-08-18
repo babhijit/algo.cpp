@@ -14,22 +14,21 @@ namespace algo::interview::medium::meeting_rooms_ii {
         END = 1
     };
 
-    void copySorted(std::vector<int>& tgt, std::vector<std::vector<int>>& source, RangeType which) {
-        for (std::size_t i = 0; i < source.size(); ++i) {
-            tgt.push_back(source[i][which]);
-        }
-        std::sort(tgt.begin(), tgt.end(),
-                  [](const int& a, const int& b) { return a < b; });
+    std::vector<int> getSortedTimes(std::vector<std::vector<int>> &intervals, RangeType which) {
+        std::vector<int> times;
+        times.reserve(intervals.size());
+
+        std::transform(intervals.begin(), intervals.end(), std::back_inserter(times), [which](auto const &interval) {
+            return interval[which];
+        });
+
+        std::sort(times.begin(), times.end());
+        return times;
     }
 
-    int MeetingRooms::minMeetingRooms(std::vector<std::vector<int>>& intervals) {
-        std::vector<int> startTimes;
-        startTimes.reserve(intervals.size());
-        copySorted(startTimes, intervals, START);
-
-        std::vector<int> endTimes;
-        endTimes.reserve(intervals.size());
-        copySorted(endTimes, intervals, END);
+    int MeetingRooms::minMeetingRooms(std::vector<std::vector<int>> &intervals) {
+        auto startTimes = getSortedTimes(intervals, START);
+        auto endTimes = getSortedTimes(intervals, END);
 
         int usedRooms = 0;
         int start{0}, end{0};
