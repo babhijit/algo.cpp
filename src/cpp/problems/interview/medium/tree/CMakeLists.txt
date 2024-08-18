@@ -1,6 +1,7 @@
 project(algo.cpp.problems.interview.medium.tree)
 
 add_subdirectory(lowest_common_anscestor_3_1650)
+add_subdirectory(lowest_common_ancester_bst_235)
 add_subdirectory(lowest_common_ancestor_236)
 add_subdirectory(sum_root2leaf_nos_129)
 add_subdirectory(bst_to_sorted_doublylinkedlist_426)
